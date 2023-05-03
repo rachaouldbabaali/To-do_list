@@ -51,7 +51,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Webpack 4 Starter',
       filename: 'index.html',
-      template: path.resolve(__dirname, 'src', 'template.html'),
+      template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new BundleAnalyzerPlugin(),
   ],
