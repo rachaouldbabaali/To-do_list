@@ -38,18 +38,25 @@ const populateTaskList = () => {
     taskList.appendChild(listItem);
   });
   // create clear completed button
-    const clearCompletedButton = document.createElement('button');
-    clearCompletedButton.classList.add('clear-completed');
-    clearCompletedButton.textContent = 'Clear completed tasks';
-    clearCompletedButton.addEventListener('click', () => {
-        const completedTasks = document.querySelectorAll('.completed');
-        completedTasks.forEach((task) => {
-            task.remove();
-        });
-        }
-    );
-    taskList.appendChild(clearCompletedButton);
+  const clearCompletedButton = document.createElement('button');
+  clearCompletedButton.classList.add('clear-completed');
+  clearCompletedButton.textContent = 'Clear completed tasks';
+  clearCompletedButton.addEventListener('click', () => {
+    const completedTasks = document.querySelectorAll('.completed');
+    completedTasks.forEach((task) => {
+      task.remove();
+    });
+  });
+  taskList.appendChild(clearCompletedButton);
 };
+
+// save task to local storage
+const saveTask = (task) => {
+  const taskList = JSON.parse(localStorage.getItem('tasks'));
+  taskList.push(task);
+  localStorage.setItem('tasks', JSON.stringify(taskList));
+};
+
 window.onload = () => {
   populateTaskList();
 };
