@@ -13,15 +13,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var tasks = [{
-  description: "Buy rcha groceries",
+  description: 'Buy groceries',
   completed: false,
   index: 0
 }, {
-  description: "Do laundry",
+  description: 'Do laundry',
   completed: true,
   index: 1
 }, {
-  description: "Clean the kitchen",
+  description: 'Clean the kitchen',
   completed: false,
   index: 2
 }];
@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Roboto\", sans-serif;\n}\n\nbody {\n  background-color: #fff;\n}\n\nh1 {\n  font-size: 3rem;\n  color: #dd5a5a;\n  text-align: center;\n  margin: 2rem 0;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAOA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;EACA,iCANc;AAAhB;;AASA;EACE,sBAZkB;AAMpB;;AASA;EACE,eAAA;EACA,cApBe;EAqBf,kBAAA;EACA,cAAA;AANF","sourcesContent":["$primary-color : #dd5a5a;\r\n$secondary-color : #f2f2f2;\r\n$tertiary-color : #333;\r\n$quaternary-color : #fff;\r\n\r\n$primary-font : 'Roboto', sans-serif;\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: $primary-font;\r\n}\r\n\r\nbody {\r\n  background-color: $quaternary-color;\r\n}\r\n\r\nh1 {\r\n  font-size: 3rem;\r\n  color: $primary-color;\r\n  text-align: center;\r\n  margin: 2rem 0;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Define variables for colors and font families */\n/* Define styles for the todo form */\n#todo-form {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 0;\n  padding: 0.5rem 1rem;\n  border-bottom: #6c757d 1px solid;\n}\n\n/* Define styles for the input field */\n#todo-input {\n  flex-grow: 1;\n  border: none;\n  font-family: Arial, sans-serif;\n  font-size: 1rem;\n  color: #6c757d;\n}\n#todo-input::placeholder {\n  color: #6c757d;\n  opacity: 0.5;\n}\n#todo-input:focus {\n  outline: none;\n  border-color: #855a71;\n}\n\n/* Define styles for the submit button */\n[type=submit] {\n  margin: 0 1rem;\n  padding: 0.5rem;\n  background-color: transparent;\n  border: none;\n  border-radius: 3px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n[type=submit]:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n\n/* Define styles for the todo list container */\n.todo-list {\n  margin: 0 auto;\n  max-width: 600px;\n  font-family: Arial, sans-serif;\n  box-shadow: #6c757d 0px 0px 10px 0px;\n  border: #6c757d 1px solid;\n}\n\n/* Define styles for the list title */\n.todo-list > h2 {\n  font-size: 2rem;\n  color: #855a71;\n  text-align: left;\n  margin: 0;\n  border-bottom: #6c757d 1px solid;\n  padding: 1rem;\n}\n\n/* Define styles for the task list */\n#tasks {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/* Define styles for individual tasks */\n.task {\n  padding: 0.5rem 1rem;\n  border-bottom: 1px solid #6c757d;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n.task:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n.task.completed {\n  text-decoration: line-through;\n  color: #6c757d;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA,kDAAA;AAMA,oCAAA;AACA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,SAAA;EACA,oBAAA;EACA,gCAAA;AAJF;;AAOA,sCAAA;AACA;EACE,YAAA;EACA,YAAA;EACA,8BAhBY;EAiBZ,eAAA;EACA,cApBgB;AAgBlB;AAME;EACE,cAvBc;EAwBd,YAAA;AAJJ;AAOE;EACE,aAAA;EACA,qBA9BY;AAyBhB;;AASA,wCAAA;AACA;EACE,cAAA;EACA,eAAA;EACA,6BAAA;EACA,YAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cA7CU;AAuCd;;AASA,8CAAA;AACA;EACE,cAAA;EACA,gBAAA;EACA,8BAnDY;EAoDZ,oCAAA;EACA,yBAAA;AANF;;AASA,qCAAA;AACA;EACE,eAAA;EACA,cA9Dc;EA+Dd,gBAAA;EACA,SAAA;EACA,gCAAA;EACA,aAAA;AANF;;AASA,oCAAA;AACA;EACE,gBAAA;EACA,SAAA;EACA,UAAA;AANF;;AASA,uCAAA;AACA;EACE,oBAAA;EACA,gCAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cAnFU;AA6Ed;AASE;EACE,6BAAA;EACA,cAzFc;AAkFlB","sourcesContent":["/* Define variables for colors and font families */\r\n$primary-color: #855a71;\r\n$secondary-color: #6c757d;\r\n$third-color: #ecf4fc;\r\n$font-family: Arial, sans-serif;\r\n\r\n/* Define styles for the todo form */\r\n#todo-form {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0;\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: $secondary-color 1px solid;\r\n}\r\n\r\n/* Define styles for the input field */\r\n#todo-input {\r\n  flex-grow: 1;\r\n  border: none;\r\n  font-family: $font-family;\r\n  font-size: 1rem;\r\n  color: $secondary-color;\r\n\r\n  &::placeholder {\r\n    color: $secondary-color;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  &:focus {\r\n    outline: none;\r\n    border-color: $primary-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the submit button */\r\n[type=\"submit\"] {\r\n  margin: 0 1rem;\r\n  padding: 0.5rem;\r\n  background-color: transparent;\r\n  border: none;\r\n  border-radius: 3px;\r\n  font-size: 1rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n  \r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n}\r\n/* Define styles for the todo list container */\r\n.todo-list {\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  font-family: $font-family;\r\n  box-shadow: $secondary-color 0px 0px 10px 0px;\r\n  border: #6c757d 1px solid;\r\n}\r\n\r\n/* Define styles for the list title */\r\n.todo-list > h2 {\r\n  font-size: 2rem;\r\n  color: $primary-color;\r\n  text-align: left;\r\n  margin: 0;\r\n  border-bottom: #6c757d 1px solid;\r\n  padding: 1rem;\r\n}\r\n\r\n/* Define styles for the task list */\r\n#tasks {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0; \r\n}\r\n\r\n/* Define styles for individual tasks */\r\n.task {\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: 1px solid $secondary-color;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n\r\n  &.completed {\r\n    text-decoration: line-through;\r\n    color: $secondary-color;\r\n  }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -579,29 +579,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tasks.js */ "./src/modules/tasks.js");
 
 
-function populateTaskList(tasks) {
-  var taskList = document.getElementById("tasks");
+var populateTaskList = function populateTaskList() {
+  var taskList = document.getElementById('tasks');
 
   // Clear any existing list items
-  taskList.innerHTML = "";
+  taskList.innerHTML = '';
 
   // Iterate over the tasks array and create a list item for each task
-  tasks.forEach(function (task) {
-    var listItem = document.createElement("li");
+  _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"].forEach(function (task) {
+    var listItem = document.createElement('li');
+    listItem.classList.add('task');
 
     // Set the text content of the list item to the task description
-    listItem.textContent = task.description;
+    // listItem.textContent = task.description;
 
-    // Add a "completed" class to the list item if the task has been completed
-    if (task.completed) {
-      listItem.classList.add("completed");
-    }
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.classList.add('checkbox');
+    checkbox.addEventListener('change', function () {
+      if (checkbox.checked) {
+        listItem.classList.add('completed');
+      } else {
+        listItem.classList.remove('completed');
+      }
+    });
+    var label = document.createElement('label');
+    label.classList.add('label');
+    var icon = document.createElement('i');
+    icon.classList.add('fas', 'fa-check');
+    label.appendChild(icon);
+    listItem.appendChild(checkbox);
+    listItem.appendChild(document.createTextNode(task.description));
+    listItem.appendChild(label);
 
     // Add the list item to the task list
     taskList.appendChild(listItem);
   });
-}
-populateTaskList(_modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+};
+window.onload = function () {
+  populateTaskList();
+};
 })();
 
 /******/ })()
