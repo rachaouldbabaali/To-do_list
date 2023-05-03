@@ -1,23 +1,26 @@
-
 import './styles/main.scss';
-import tasks from './tasks.js';
+import tasks from './modules/tasks.js';
 
-function iterateTasks(tasks) {
-// Create a new list element
-const list = document.createElement('ul');
+function populateTaskList(tasks) {
+  const taskList = document.getElementById('tasks');
 
-// Iterate over the tasks array
-for (const task of tasks) {
-    // Create a new list item element
-    const li = document.createElement('li');
+  // Clear any existing list items
+  taskList.innerHTML = '';
 
-    // Set the text of the list item to the task
-    li.textContent = task;
+  // Iterate over the tasks array and create a list item for each task
+  tasks.forEach((task) => {
+    const listItem = document.createElement('li');
 
-    // Append the list item to the list
-    list.appendChild(li);
+    // Set the text content of the list item to the task description
+    listItem.textContent = task.description;
+
+    // Add a "completed" class to the list item if the task has been completed
+    if (task.completed) {
+      listItem.classList.add('completed');
+    }
+
+    // Add the list item to the task list
+    taskList.appendChild(listItem);
+  });
 }
-
-// Append the list to the DOM
-document.getElementById('tasks').appendChild(list);
-}
+populateTaskList(tasks);

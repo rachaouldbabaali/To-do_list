@@ -2,20 +2,30 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/generateJoks.js":
-/*!*****************************!*\
-  !*** ./src/generateJoks.js ***!
-  \*****************************/
+/***/ "./src/modules/tasks.js":
+/*!******************************!*\
+  !*** ./src/modules/tasks.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function generateJoks() {
-  return 'I am a jok';
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (generateJoks);
+var tasks = [{
+  description: "Buy rcha groceries",
+  completed: false,
+  index: 0
+}, {
+  description: "Do laundry",
+  completed: true,
+  index: 1
+}, {
+  description: "Clean the kitchen",
+  completed: false,
+  index: 2
+}];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tasks);
 
 /***/ }),
 
@@ -483,16 +493,6 @@ function styleTagTransform(css, styleElement) {
 }
 module.exports = styleTagTransform;
 
-/***/ }),
-
-/***/ "./src/assets/favicon.png":
-/*!********************************!*\
-  !*** ./src/assets/favicon.png ***!
-  \********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/favicon].png";
-
 /***/ })
 
 /******/ 	});
@@ -546,18 +546,6 @@ module.exports = __webpack_require__.p + "images/favicon].png";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -574,29 +562,6 @@ module.exports = __webpack_require__.p + "images/favicon].png";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src;
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) {
-/******/ 					var i = scripts.length - 1;
-/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -610,16 +575,33 @@ var __webpack_exports__ = {};
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _generateJoks_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generateJoks.js */ "./src/generateJoks.js");
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
-/* harmony import */ var _assets_favicon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/favicon.png */ "./src/assets/favicon.png");
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
+/* harmony import */ var _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tasks.js */ "./src/modules/tasks.js");
 
 
+function populateTaskList(tasks) {
+  var taskList = document.getElementById("tasks");
 
-(0,_generateJoks_js__WEBPACK_IMPORTED_MODULE_0__["default"])();
-var img = document.createElement('img');
-img.src = _assets_favicon_png__WEBPACK_IMPORTED_MODULE_2__;
-document.body.appendChild(img);
+  // Clear any existing list items
+  taskList.innerHTML = "";
+
+  // Iterate over the tasks array and create a list item for each task
+  tasks.forEach(function (task) {
+    var listItem = document.createElement("li");
+
+    // Set the text content of the list item to the task description
+    listItem.textContent = task.description;
+
+    // Add a "completed" class to the list item if the task has been completed
+    if (task.completed) {
+      listItem.classList.add("completed");
+    }
+
+    // Add the list item to the task list
+    taskList.appendChild(listItem);
+  });
+}
+populateTaskList(_modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 })();
 
 /******/ })()
