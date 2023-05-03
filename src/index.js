@@ -37,6 +37,18 @@ const populateTaskList = () => {
     // Add the list item to the task list
     taskList.appendChild(listItem);
   });
+  // create clear completed button
+    const clearCompletedButton = document.createElement('button');
+    clearCompletedButton.classList.add('clear-completed');
+    clearCompletedButton.textContent = 'Clear completed tasks';
+    clearCompletedButton.addEventListener('click', () => {
+        const completedTasks = document.querySelectorAll('.completed');
+        completedTasks.forEach((task) => {
+            task.remove();
+        });
+        }
+    );
+    taskList.appendChild(clearCompletedButton);
 };
 window.onload = () => {
   populateTaskList();
