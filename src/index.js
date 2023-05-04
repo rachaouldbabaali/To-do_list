@@ -12,7 +12,6 @@ const populateTaskList = () => {
     const listItem = document.createElement('li');
     listItem.classList.add('task');
 
-
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('checkbox');
