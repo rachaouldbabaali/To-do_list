@@ -1,4 +1,4 @@
-# webpack-starter
+# To-do List
 
 # 📗 Table of Contents
 
@@ -6,7 +6,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -63,11 +62,6 @@ Overall, a to-do list project is a great way to practice working with JavaScript
 ## 🚀 Live Demo(still in development) <a name="live-demo"></a>
 
 
-- [live project](#)
-
-## 🚀 Live Video(still in development) <a name="live-video"></a>
-
-- [live video ](#)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

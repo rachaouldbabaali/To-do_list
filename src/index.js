@@ -12,8 +12,6 @@ const populateTaskList = () => {
     const listItem = document.createElement('li');
     listItem.classList.add('task');
 
-    // Set the text content of the list item to the task description
-    // listItem.textContent = task.description;
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
