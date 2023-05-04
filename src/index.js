@@ -50,13 +50,6 @@ const populateTaskList = () => {
   taskList.appendChild(clearCompletedButton);
 };
 
-// save task to local storage
-const saveTask = (task) => {
-  const taskList = JSON.parse(localStorage.getItem('tasks'));
-  taskList.push(task);
-  localStorage.setItem('tasks', JSON.stringify(taskList));
-};
-
 window.onload = () => {
   populateTaskList();
 };
