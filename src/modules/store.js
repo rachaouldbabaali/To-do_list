@@ -30,5 +30,17 @@ class Store {
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
+
+  // check if task is already in the list
+  static checkTask(description) {
+    const tasks = Store.getTasks();
+    let check = false;
+    tasks.forEach((task) => {
+      if (task.description.toUpperCase() === description.toUpperCase()) {
+        check = true;
+      }
+    });
+    return check;
+  }
 }
 export default Store;

@@ -1,7 +1,6 @@
 import './styles/main.scss';
 import Task from './modules/tasks.js';
 import Store from './modules/store.js';
-
 // UI c!lass handles ui tasks
 class UI {
   static displayTasks() {
@@ -32,28 +31,6 @@ class UI {
       el.parentElement.parentElement.remove();
     } else if (el.classList.contains('deleteFromPath')) {
       el.parentElement.parentElement.parentElement.remove();
-    }
-  }
-
-  static editTask(el) {
-    if (el.classList.contains('edit')) {
-      const task = el.parentElement.parentElement;
-      const taskDescription = task.querySelector('.task-description');
-      const taskDescriptionText = taskDescription.textContent;
-      const taskDescriptionInput = document.createElement('input');
-      taskDescriptionInput.type = 'text';
-      taskDescriptionInput.value = taskDescriptionText;
-      taskDescriptionInput.classList.add('task-description-input');
-      taskDescriptionInput.classList.add('form-control');
-      taskDescription.replaceWith(taskDescriptionInput);
-      taskDescriptionInput.focus();
-      taskDescriptionInput.addEventListener('blur', () => {
-        const newDescription = taskDescriptionInput.value;
-        taskDescriptionInput.replaceWith(taskDescription);
-        taskDescription.textContent = newDescription;
-        const index = taskDescription.id;
-        Store.updateTask(index, newDescription);
-      });
     }
   }
 
@@ -89,23 +66,23 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
   // Get form values
   const description = document.querySelector('#todo-input').value;
   const completed = false;
-  let index = 0;
-  index += 1;
-  Task.index = index;
   // validate
   if (description === '') {
     UI.showAlert('Please add a task', 'danger');
-  }
+  } else if (Store.checkTask(description)) {
+    UI.showAlert('Task already in the list', 'danger');
+  } else {
   // Instantiate task
-  const task = new Task(description, completed, index);
-  // Add task to UI
-  UI.addTaskToList(task);
-  UI.showAlert('Task Added', 'success');
-  // Add task to store
-  Store.addTask(task);
+    const task = new Task(description, completed);
+    // Add task to UI
+    UI.addTaskToList(task);
+    UI.showAlert('Task Added', 'success');
+    // Add task to store
+    Store.addTask(task);
 
-  // Clear fields
-  UI.clearFields();
+    // Clear fields
+    UI.clearFields();
+  }
 });
 
 // Event: Remove a Task
@@ -113,9 +90,4 @@ document.querySelector('#tasks').addEventListener('click', (e) => {
   UI.deleteTask(e.target);
   // Remove task from store
   Store.removeTask(e.target.parentElement.parentElement);
-});
-
-// Event: call edit function
-document.querySelector('#tasks').addEventListener('click', (e) => {
-  UI.editTask(e.target);
 });

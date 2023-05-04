@@ -58,6 +58,20 @@ var Store = /*#__PURE__*/function () {
       });
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
+
+    // check if task is already in the list
+  }, {
+    key: "checkTask",
+    value: function checkTask(description) {
+      var tasks = Store.getTasks();
+      var check = false;
+      tasks.forEach(function (task) {
+        if (task.description.toUpperCase() === description.toUpperCase()) {
+          check = true;
+        }
+      });
+      return check;
+    }
   }]);
   return Store;
 }();
@@ -81,13 +95,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classStaticPrivateFieldSpecSet(receiver, classConstructor, descriptor, value) { _classCheckPrivateStaticAccess(receiver, classConstructor); _classCheckPrivateStaticFieldDescriptor(descriptor, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
+function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
+function _classStaticPrivateFieldSpecGet(receiver, classConstructor, descriptor) { _classCheckPrivateStaticAccess(receiver, classConstructor); _classCheckPrivateStaticFieldDescriptor(descriptor, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
+function _classCheckPrivateStaticFieldDescriptor(descriptor, action) { if (descriptor === undefined) { throw new TypeError("attempted to " + action + " private static field before its declaration"); } }
+function _classCheckPrivateStaticAccess(receiver, classConstructor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } }
+function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
 // create class for tasks
-var Task = /*#__PURE__*/_createClass(function Task(description, completed, index) {
+var Task = /*#__PURE__*/_createClass(
+// eslint-disable-next-line no-unused-vars
+function Task(description, completed) {
+  var _Task$index, _Task$index2;
   _classCallCheck(this, Task);
   this.description = description;
   this.completed = completed;
-  this.index = index;
+  this.index = _classStaticPrivateFieldSpecGet(Task, Task, _index);
+  // eslint-disable-next-line no-plusplus
+  _classStaticPrivateFieldSpecSet(Task, Task, _index, (_Task$index = _classStaticPrivateFieldSpecGet(Task, Task, _index), _Task$index2 = _Task$index++, _Task$index)), _Task$index2;
 });
+var _index = {
+  writable: true,
+  value: 0
+};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Task);
 
 /***/ }),
@@ -645,55 +674,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-
 
 
 
 // UI c!lass handles ui tasks
 var UI = /*#__PURE__*/function () {
   function UI() {
-    var _this = this;
     _classCallCheck(this, UI);
-    /*static editTask(el) {
-      if (el.classList.contains('edit')) {
-        const task = el.parentElement.parentElement;
-        const taskDescription = task.querySelector('.task-description');
-        const taskDescriptionText = taskDescription.textContent;
-        const taskDescriptionInput = document.createElement('input');
-        taskDescriptionInput.type = 'text';
-        taskDescriptionInput.value = taskDescriptionText;
-        taskDescriptionInput.classList.add('task-description-input');
-        taskDescriptionInput.classList.add('form-control');
-        taskDescription.replaceWith(taskDescriptionInput);
-        taskDescriptionInput.focus();
-        taskDescriptionInput.addEventListener('blur', () => {
-          const newDescription = taskDescriptionInput.value;
-          taskDescriptionInput.replaceWith(taskDescription);
-          taskDescription.textContent = newDescription;
-          const index = taskDescription.id;
-          Store.updateTask(index, newDescription);
-        });
-      }
-    } */
-    _defineProperty(this, "editTask", function (index, newDescription) {
-      // Find task with specified index in tasks array
-      var found = _this.tasks.find(function (task) {
-        return task.index === parseInt(index, 10);
-      });
-
-      // Update task description with new description
-      found.description = newDescription;
-      _this.tasks = _this.tasks.map(function (task) {
-        if (found.index === task.index) {
-          return found;
-        }
-        return task;
-      });
-      localStorage.setItem('tasks', JSON.stringify(_this.tasks)); // save updated collection to localStorage
-    });
   }
   _createClass(UI, null, [{
     key: "displayTasks",
@@ -757,23 +746,23 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
   // Get form values
   var description = document.querySelector('#todo-input').value;
   var completed = false;
-  var index = 0;
-  index += 1;
-  _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"].index = index;
   // validate
   if (description === '') {
     UI.showAlert('Please add a task', 'danger');
-  }
-  // Instantiate task
-  var task = new _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"](description, completed, index);
-  // Add task to UI
-  UI.addTaskToList(task);
-  UI.showAlert('Task Added', 'success');
-  // Add task to store
-  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].addTask(task);
+  } else if (_modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].checkTask(description)) {
+    UI.showAlert('Task already in the list', 'danger');
+  } else {
+    // Instantiate task
+    var task = new _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"](description, completed);
+    // Add task to UI
+    UI.addTaskToList(task);
+    UI.showAlert('Task Added', 'success');
+    // Add task to store
+    _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].addTask(task);
 
-  // Clear fields
-  UI.clearFields();
+    // Clear fields
+    UI.clearFields();
+  }
 });
 
 // Event: Remove a Task
@@ -781,42 +770,6 @@ document.querySelector('#tasks').addEventListener('click', function (e) {
   UI.deleteTask(e.target);
   // Remove task from store
   _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(e.target.parentElement.parentElement);
-});
-
-// Event: call edit function
-document.querySelector('#tasks').addEventListener('click', function (e) {
-  UI.editTask(e.target);
-});
-document.addEventListener('click', function (e) {
-  var target = e.target.closest('.edit');
-  if (target) {
-    var descriptions = document.querySelectorAll('.task-description');
-    descriptions.forEach(function (description) {
-      if (target.parentNode.id === description.parentNode.id) {
-        target.parentNode.style.backgroundColor = '#f5bc42';
-        var newText = target.parentNode.firstElementChild.nextElementSibling;
-        newText.style.backgroundColor = '#f5bc42';
-        var trash = target.parentNode.lastElementChild;
-        var more = target.parentNode.firstElementChild.nextElementSibling.nextElementSibling;
-        trash.style.display = 'block';
-        more.style.display = 'none';
-        target.parentNode.firstElementChild.nextElementSibling.removeAttribute('disabled');
-        target.parentNode.firstElementChild.nextElementSibling.focus();
-        newText.onkeydown = function (e) {
-          if (e.keyCode === 13) {
-            target.parentNode.style.backgroundColor = 'white';
-            newText.style.backgroundColor = 'white';
-            var descriptionInput = newText.value;
-            var id = newText.parentNode.id;
-            UI.editTask(id, descriptionInput);
-            newText.setAttribute('disabled', 'true');
-            trash.style.display = 'none';
-            more.style.display = 'block';
-          }
-        };
-      }
-    });
-  }
 });
 })();
 
