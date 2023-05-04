@@ -21,15 +21,14 @@ class Store {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-    static getTaskByIndex(index) {
-        const tasks = this.getTasks();
-        return tasks[index];
-    }
-
-    static editTask(index, description) {
-        const tasks = this.getTasks();
-        tasks[index].description = description;
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
+  static updateTask(index, newDescription) {
+    const tasks = Store.getTasks();
+    tasks.forEach((task) => {
+      if (task.index === index) {
+        task.description = newDescription;
+      }
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 }
 export default Store;

@@ -48,16 +48,14 @@ var Store = /*#__PURE__*/function () {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   }, {
-    key: "getTaskByIndex",
-    value: function getTaskByIndex(index) {
-      var tasks = this.getTasks();
-      return tasks[index];
-    }
-  }, {
-    key: "editTask",
-    value: function editTask(index, description) {
-      var tasks = this.getTasks();
-      tasks[index].description = description;
+    key: "updateTask",
+    value: function updateTask(index, newDescription) {
+      var tasks = Store.getTasks();
+      tasks.forEach(function (task) {
+        if (task.index === index) {
+          task.description = newDescription;
+        }
+      });
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   }]);
@@ -647,6 +645,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
@@ -656,7 +655,45 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 // UI c!lass handles ui tasks
 var UI = /*#__PURE__*/function () {
   function UI() {
+    var _this = this;
     _classCallCheck(this, UI);
+    /*static editTask(el) {
+      if (el.classList.contains('edit')) {
+        const task = el.parentElement.parentElement;
+        const taskDescription = task.querySelector('.task-description');
+        const taskDescriptionText = taskDescription.textContent;
+        const taskDescriptionInput = document.createElement('input');
+        taskDescriptionInput.type = 'text';
+        taskDescriptionInput.value = taskDescriptionText;
+        taskDescriptionInput.classList.add('task-description-input');
+        taskDescriptionInput.classList.add('form-control');
+        taskDescription.replaceWith(taskDescriptionInput);
+        taskDescriptionInput.focus();
+        taskDescriptionInput.addEventListener('blur', () => {
+          const newDescription = taskDescriptionInput.value;
+          taskDescriptionInput.replaceWith(taskDescription);
+          taskDescription.textContent = newDescription;
+          const index = taskDescription.id;
+          Store.updateTask(index, newDescription);
+        });
+      }
+    } */
+    _defineProperty(this, "editTask", function (index, newDescription) {
+      // Find task with specified index in tasks array
+      var found = _this.tasks.find(function (task) {
+        return task.index === parseInt(index, 10);
+      });
+
+      // Update task description with new description
+      found.description = newDescription;
+      _this.tasks = _this.tasks.map(function (task) {
+        if (found.index === task.index) {
+          return found;
+        }
+        return task;
+      });
+      localStorage.setItem('tasks', JSON.stringify(_this.tasks)); // save updated collection to localStorage
+    });
   }
   _createClass(UI, null, [{
     key: "displayTasks",
@@ -671,7 +708,7 @@ var UI = /*#__PURE__*/function () {
     value: function addTaskToList(task) {
       var list = document.querySelector('#tasks');
       var row = document.createElement('li');
-      row.innerHTML = "\n        <input type=\"checkbox\" class=\"checkbox\">\n        ".concat(task.description, "\n        <label class=\"label\"><i class=\"fas fa-check\"></i></label>\n        <a href=\"#\"> <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square edit\" viewBox=\"0 0 16 16\">\n        <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>\n        <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>\n        </svg></a>\n        <a href=\"#\" id =\"delete-btn\" ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash3-fill delete\" viewBox=\"0 0 16 16\">\n        <path class=\"deleteFromPath\" d=\"M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z\"/>\n        </svg></a>\n        ");
+      row.innerHTML = "\n        <input type=\"checkbox\" class=\"checkbox\">\n        <div id=".concat(task.index, " class=\"task-description\">").concat(task.description, "</div>\n        <label class=\"label\"><i class=\"fas fa-check\"></i></label>\n        <a href=\"#\" class ='edit' > <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square edit\" viewBox=\"0 0 16 16\">\n        <path class='edit' d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>\n        <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>\n        </svg></a>\n        <a href=\"#\" id =\"delete-btn\" ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash3-fill delete\" viewBox=\"0 0 16 16\">\n        <path class=\"deleteFromPath\" d=\"M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z\"/>\n        </svg></a>\n        ");
       list.appendChild(row);
     }
   }, {
@@ -701,19 +738,16 @@ var UI = /*#__PURE__*/function () {
     value: function clearFields() {
       document.querySelector('#todo-input').value = '';
     }
-  }, {
-    key: "clearCopmleted",
-    value: function clearCopmleted() {
-      var completedTasks = document.querySelectorAll('.completed');
-      completedTasks.forEach(function (task) {
-        return task.remove();
-      });
-    }
   }]);
   return UI;
 }(); // Event: Display Tasks
-document.addEventListener('DOMContentLoaded', UI.displayTasks);
-var index = 0;
+// document.addEventListener('DOMContentLoaded', UI.displayTasks);
+document.addEventListener('DOMContentLoaded', function () {
+  var tasks = _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].getTasks();
+  tasks.forEach(function (task) {
+    UI.addTaskToList(task);
+  });
+});
 
 // Event: Add a Task
 document.querySelector('#todo-form').addEventListener('submit', function (e) {
@@ -723,7 +757,9 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
   // Get form values
   var description = document.querySelector('#todo-input').value;
   var completed = false;
+  var index = 0;
   index += 1;
+  _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"].index = index;
   // validate
   if (description === '') {
     UI.showAlert('Please add a task', 'danger');
@@ -747,40 +783,40 @@ document.querySelector('#tasks').addEventListener('click', function (e) {
   _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(e.target.parentElement.parentElement);
 });
 
-// event: update task index
+// Event: call edit function
 document.querySelector('#tasks').addEventListener('click', function (e) {
-  if (e.target.classList.contains('checkbox')) {
-    e.target.parentElement.parentElement.setAttribute('data-index', index);
-  } else if (e.target.classList.contains('fa-check')) {
-    e.target.parentElement.parentElement.parentElement.setAttribute('data-index', index);
-  }
+  UI.editTask(e.target);
 });
-
-// edit old task
-document.querySelector('#tasks').addEventListener('click', function (e) {
-  if (e.target.classList.contains('edit')) {
-    var oldTask = e.target.parentElement.parentElement.parentElement;
-    var oldTaskDescription = oldTask.querySelector('.description').textContent;
-    document.querySelector('#todo-input').value = oldTaskDescription;
-    oldTask.remove();
-    UI.showAlert('Task Edited', 'success');
+document.addEventListener('click', function (e) {
+  var target = e.target.closest('.edit');
+  if (target) {
+    var descriptions = document.querySelectorAll('.task-description');
+    descriptions.forEach(function (description) {
+      if (target.parentNode.id === description.parentNode.id) {
+        target.parentNode.style.backgroundColor = '#f5bc42';
+        var newText = target.parentNode.firstElementChild.nextElementSibling;
+        newText.style.backgroundColor = '#f5bc42';
+        var trash = target.parentNode.lastElementChild;
+        var more = target.parentNode.firstElementChild.nextElementSibling.nextElementSibling;
+        trash.style.display = 'block';
+        more.style.display = 'none';
+        target.parentNode.firstElementChild.nextElementSibling.removeAttribute('disabled');
+        target.parentNode.firstElementChild.nextElementSibling.focus();
+        newText.onkeydown = function (e) {
+          if (e.keyCode === 13) {
+            target.parentNode.style.backgroundColor = 'white';
+            newText.style.backgroundColor = 'white';
+            var descriptionInput = newText.value;
+            var id = newText.parentNode.id;
+            UI.editTask(id, descriptionInput);
+            newText.setAttribute('disabled', 'true');
+            trash.style.display = 'none';
+            more.style.display = 'block';
+          }
+        };
+      }
+    });
   }
-});
-
-// Event: add completed class
-document.querySelector('#tasks').addEventListener('click', function (e) {
-  if (e.target.classList.contains('checkbox')) {
-    e.target.parentElement.classList.toggle('completed');
-    e.completed = true;
-  } else if (e.target.classList.contains('fa-check')) {
-    e.target.parentElement.parentElement.classList.toggle('completed');
-    e.completed = false;
-  }
-});
-
-// Event: delete all completed tasks
-document.querySelector('#clear-btn').addEventListener('click', function () {
-  UI.clearCopmleted();
 });
 })();
 
