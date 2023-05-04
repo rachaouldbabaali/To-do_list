@@ -47,17 +47,6 @@ var Store = /*#__PURE__*/function () {
       tasks.splice(index, 1);
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
-  }, {
-    key: "updateTask",
-    value: function updateTask(index, newDescription) {
-      var tasks = Store.getTasks();
-      tasks.forEach(function (task) {
-        if (task.index === index) {
-          task.description = newDescription;
-        }
-      });
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
 
     // check if task is already in the list
   }, {
@@ -92,31 +81,20 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _classStaticPrivateFieldSpecSet(receiver, classConstructor, descriptor, value) { _classCheckPrivateStaticAccess(receiver, classConstructor); _classCheckPrivateStaticFieldDescriptor(descriptor, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
-function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
-function _classStaticPrivateFieldSpecGet(receiver, classConstructor, descriptor) { _classCheckPrivateStaticAccess(receiver, classConstructor); _classCheckPrivateStaticFieldDescriptor(descriptor, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
-function _classCheckPrivateStaticFieldDescriptor(descriptor, action) { if (descriptor === undefined) { throw new TypeError("attempted to " + action + " private static field before its declaration"); } }
-function _classCheckPrivateStaticAccess(receiver, classConstructor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } }
-function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
 // create class for tasks
 var Task = /*#__PURE__*/_createClass(
 // eslint-disable-next-line no-unused-vars
-function Task(description, completed) {
-  var _Task$index, _Task$index2;
+function Task(description, completed, index) {
   _classCallCheck(this, Task);
   this.description = description;
   this.completed = completed;
-  this.index = _classStaticPrivateFieldSpecGet(Task, Task, _index);
-  // eslint-disable-next-line no-plusplus
-  _classStaticPrivateFieldSpecSet(Task, Task, _index, (_Task$index = _classStaticPrivateFieldSpecGet(Task, Task, _index), _Task$index2 = _Task$index++, _Task$index)), _Task$index2;
+  this.index = index;
 });
-var _index = {
-  writable: true,
-  value: 0
-};
+_defineProperty(Task, "index", 0);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Task);
 
 /***/ }),
@@ -767,9 +745,10 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
 
 // Event: Remove a Task
 document.querySelector('#tasks').addEventListener('click', function (e) {
+  e.preventDefault();
   UI.deleteTask(e.target);
   // Remove task from store
-  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(e.target.parentElement.parentElement);
+  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(e.target);
 });
 })();
 

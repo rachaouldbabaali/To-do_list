@@ -21,15 +21,7 @@ class Store {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  static updateTask(index, newDescription) {
-    const tasks = Store.getTasks();
-    tasks.forEach((task) => {
-      if (task.index === index) {
-        task.description = newDescription;
-      }
-    });
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
+  
 
   // check if task is already in the list
   static checkTask(description) {
