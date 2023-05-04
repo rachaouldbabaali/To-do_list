@@ -12,20 +12,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var tasks = [{
-  description: 'Buy groceries',
-  completed: false,
-  index: 0
-}, {
-  description: 'Do laundry',
-  completed: true,
-  index: 1
-}, {
-  description: 'Clean the kitchen',
-  completed: false,
-  index: 2
-}];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tasks);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+// create class for tasks
+var Task = /*#__PURE__*/_createClass(function Task(description, completed, index) {
+  _classCallCheck(this, Task);
+  this.description = description;
+  this.completed = completed;
+  this.index = index;
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Task);
 
 /***/ }),
 
@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Define variables for colors and font families */\nhtml {\n  box-sizing: border-box;\n  background-color: #f2ecef;\n}\n\n/* Define styles for the todo form */\n#todo-form {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 0;\n  padding: 0.5rem 1rem;\n  border-bottom: #6c757d 1px solid;\n}\n\n/* Define styles for the input field */\n#todo-input {\n  flex-grow: 1;\n  border: none;\n  font-family: Arial, sans-serif;\n  font-size: 1rem;\n  color: #6c757d;\n}\n#todo-input::placeholder {\n  color: #6c757d;\n  opacity: 0.5;\n}\n#todo-input:focus {\n  outline: none;\n  border-color: #855a71;\n}\n\n/* Define styles for the submit button */\n[type=submit] {\n  margin: 0 1rem;\n  padding: 0.5rem;\n  background-color: transparent;\n  border: none;\n  border-radius: 3px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n[type=submit]:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n\n/* Define styles for the todo list container */\n.todo-list {\n  margin: 0 auto;\n  max-width: 600px;\n  font-family: Arial, sans-serif;\n  box-shadow: #6c757d 0px 0px 10px 0px;\n  border: #6c757d 1px solid;\n  background-color: white;\n}\n\n/* Define styles for the list title */\n.todo-list > h2 {\n  font-size: 2rem;\n  color: #855a71;\n  text-align: left;\n  margin: 0;\n  border-bottom: #6c757d 1px solid;\n  padding: 1rem;\n}\n\n/* Define styles for the task list */\n#tasks {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/* Define styles for individual tasks */\n.task {\n  padding: 0.5rem 1rem;\n  border-bottom: 1px solid #6c757d;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n.task:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n.task.completed {\n  text-decoration: line-through;\n  color: #6c757d;\n}\n.task .checkbox {\n  margin-right: 1rem;\n}\n\n.clear-completed {\n  margin: 1rem auto;\n  border: none;\n  background-color: transparent;\n  font-size: 1.5rem;\n  opacity: 0.5;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n  display: block;\n}\n.clear-completed:hover {\n  background-color: transparent;\n  color: #855a71;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA,kDAAA;AAKA;EACE,sBAAA;EACA,yBAAA;AAHF;;AAMA,oCAAA;AACA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,SAAA;EACA,oBAAA;EACA,gCAAA;AAHF;;AAOA,sCAAA;AACA;EACE,YAAA;EACA,YAAA;EACA,8BArBY;EAsBZ,eAAA;EACA,cAzBgB;AAqBlB;AAME;EACE,cA5Bc;EA6Bd,YAAA;AAJJ;AAOE;EACE,aAAA;EACA,qBAnCY;AA8BhB;;AASA,wCAAA;AACA;EACE,cAAA;EACA,eAAA;EACA,6BAAA;EACA,YAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cAlDU;AA4Cd;;AASA,8CAAA;AACA;EACE,cAAA;EACA,gBAAA;EACA,8BAxDY;EAyDZ,oCAAA;EACA,yBAAA;EACA,uBAAA;AANF;;AASA,qCAAA;AACA;EACE,eAAA;EACA,cApEc;EAqEd,gBAAA;EACA,SAAA;EACA,gCAAA;EACA,aAAA;AANF;;AASA,oCAAA;AACA;EACE,gBAAA;EACA,SAAA;EACA,UAAA;AANF;;AASA,uCAAA;AACA;EACE,oBAAA;EACA,gCAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cAzFU;AAmFd;AASE;EACE,6BAAA;EACA,cA/Fc;AAwFlB;AASE;EACE,kBAAA;AAPJ;;AAWA;EACE,iBAAA;EACA,YAAA;EACA,6BAAA;EACA,iBAAA;EACA,YAAA;EACA,eAAA;EACA,6CAAA;EACA,cAAA;AARF;AAUE;EACE,6BAAA;EACA,cAnHY;AA2GhB","sourcesContent":["/* Define variables for colors and font families */\r\n$primary-color: #855a71;\r\n$secondary-color: #6c757d;\r\n$third-color: #ecf4fc;\r\n$font-family: Arial, sans-serif;\r\nhtml {\r\n  box-sizing: border-box;\r\n  background-color: lighten($primary-color, 50%);\r\n}\r\n\r\n/* Define styles for the todo form */\r\n#todo-form {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0;\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: $secondary-color 1px solid;\r\n\r\n}\r\n\r\n/* Define styles for the input field */\r\n#todo-input {\r\n  flex-grow: 1;\r\n  border: none;\r\n  font-family: $font-family;\r\n  font-size: 1rem;\r\n  color: $secondary-color;\r\n\r\n  &::placeholder {\r\n    color: $secondary-color;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  &:focus {\r\n    outline: none;\r\n    border-color: $primary-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the submit button */\r\n[type=\"submit\"] {\r\n  margin: 0 1rem;\r\n  padding: 0.5rem;\r\n  background-color: transparent;\r\n  border: none;\r\n  border-radius: 3px;\r\n  font-size: 1rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n  \r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n}\r\n/* Define styles for the todo list container */\r\n.todo-list {\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  font-family: $font-family;\r\n  box-shadow: $secondary-color 0px 0px 10px 0px;\r\n  border: #6c757d 1px solid;\r\n  background-color: lighten($color: $primary-color, $amount: 60%);\r\n}\r\n\r\n/* Define styles for the list title */\r\n.todo-list > h2 {\r\n  font-size: 2rem;\r\n  color: $primary-color;\r\n  text-align: left;\r\n  margin: 0;\r\n  border-bottom: #6c757d 1px solid;\r\n  padding: 1rem;\r\n}\r\n\r\n/* Define styles for the task list */\r\n#tasks {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0; \r\n}\r\n\r\n/* Define styles for individual tasks */\r\n.task {\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: 1px solid $secondary-color;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n\r\n  &.completed {\r\n    text-decoration: line-through;\r\n    color: $secondary-color;\r\n  }\r\n  .checkbox {\r\n    margin-right: 1rem;\r\n  }\r\n}\r\n\r\n.clear-completed {\r\n  margin: 1rem auto;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 1.5rem;\r\n  opacity: 0.5;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n  display: block;\r\n\r\n  &:hover {\r\n    background-color: transparent;\r\n    color: $primary-color;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Define variables for colors and font families */\nhtml {\n  box-sizing: border-box;\n  background-color: #f2ecef;\n}\n\n/* Define styles for the todo form */\n#todo-form {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 0;\n  padding: 0.5rem 1rem;\n  border-bottom: #6c757d 1px solid;\n}\n\n/* Define styles for the input field */\n#todo-input {\n  flex-grow: 1;\n  border: none;\n  font-family: arial, sans-serif;\n  font-size: 1rem;\n  color: #6c757d;\n}\n#todo-input::placeholder {\n  color: #6c757d;\n  opacity: 0.5;\n}\n#todo-input:focus {\n  outline: none;\n  border-color: #855a71;\n}\n\n/* Define styles for the submit button */\n[type=submit] {\n  margin: 0 1rem;\n  padding: 0.5rem;\n  background-color: transparent;\n  border: none;\n  border-radius: 3px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n[type=submit]:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n\n/* Define styles for the todo list container */\n.todo-list {\n  margin: 0 auto;\n  max-width: 600px;\n  font-family: arial, sans-serif;\n  box-shadow: #6c757d 0 0 10px 0;\n  border: #6c757d 1px solid;\n  background-color: white;\n}\n\n/* Define styles for the list title */\n.todo-list > h2 {\n  font-size: 2rem;\n  color: #855a71;\n  text-align: left;\n  margin: 0;\n  border-bottom: #6c757d 1px solid;\n  padding: 1rem;\n}\n\n/* Define styles for the task list */\n#tasks {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/* Define styles for individual tasks */\n.task {\n  padding: 0.5rem 1rem;\n  border-bottom: 1px solid #6c757d;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n.task:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n.task.completed {\n  text-decoration: line-through;\n  color: #6c757d;\n}\n.task .checkbox {\n  margin-right: 1rem;\n}\n\n#clear-btn {\n  margin: 1rem auto;\n  border: none;\n  background-color: transparent;\n  font-size: 1.5rem;\n  opacity: 0.5;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n  display: block;\n}\n#clear-btn:hover {\n  background-color: transparent;\n  color: #855a71;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA,kDAAA;AAMA;EACE,sBAAA;EACA,yBAAA;AAJF;;AAOA,oCAAA;AACA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,SAAA;EACA,oBAAA;EACA,gCAAA;AAJF;;AAOA,sCAAA;AACA;EACE,YAAA;EACA,YAAA;EACA,8BArBY;EAsBZ,eAAA;EACA,cAzBgB;AAqBlB;AAME;EACE,cA5Bc;EA6Bd,YAAA;AAJJ;AAOE;EACE,aAAA;EACA,qBAnCY;AA8BhB;;AASA,wCAAA;AACA;EACE,cAAA;EACA,eAAA;EACA,6BAAA;EACA,YAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cAlDU;AA4Cd;;AAUA,8CAAA;AACA;EACE,cAAA;EACA,gBAAA;EACA,8BAzDY;EA0DZ,8BAAA;EACA,yBAAA;EACA,uBAAA;AAPF;;AAUA,qCAAA;AACA;EACE,eAAA;EACA,cArEc;EAsEd,gBAAA;EACA,SAAA;EACA,gCAAA;EACA,aAAA;AAPF;;AAUA,oCAAA;AACA;EACE,gBAAA;EACA,SAAA;EACA,UAAA;AAPF;;AAUA,uCAAA;AACA;EACE,oBAAA;EACA,gCAAA;EACA,eAAA;EACA,6CAAA;AAPF;AASE;EACE,yBAAA;EACA,cA1FU;AAmFd;AAUE;EACE,6BAAA;EACA,cAhGc;AAwFlB;AAWE;EACE,kBAAA;AATJ;;AAaA;EACE,iBAAA;EACA,YAAA;EACA,6BAAA;EACA,iBAAA;EACA,YAAA;EACA,eAAA;EACA,6CAAA;EACA,cAAA;AAVF;AAYE;EACE,6BAAA;EACA,cArHY;AA2GhB","sourcesContent":["/* Define variables for colors and font families */\r\n$primary-color: #855a71;\r\n$secondary-color: #6c757d;\r\n$third-color: #ecf4fc;\r\n$font-family: arial, sans-serif;\r\n\r\nhtml {\r\n  box-sizing: border-box;\r\n  background-color: lighten($primary-color, 50%);\r\n}\r\n\r\n/* Define styles for the todo form */\r\n#todo-form {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0;\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: $secondary-color 1px solid;\r\n}\r\n\r\n/* Define styles for the input field */\r\n#todo-input {\r\n  flex-grow: 1;\r\n  border: none;\r\n  font-family: $font-family;\r\n  font-size: 1rem;\r\n  color: $secondary-color;\r\n\r\n  &::placeholder {\r\n    color: $secondary-color;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  &:focus {\r\n    outline: none;\r\n    border-color: $primary-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the submit button */\r\n[type=\"submit\"] {\r\n  margin: 0 1rem;\r\n  padding: 0.5rem;\r\n  background-color: transparent;\r\n  border: none;\r\n  border-radius: 3px;\r\n  font-size: 1rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the todo list container */\r\n.todo-list {\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  font-family: $font-family;\r\n  box-shadow: $secondary-color 0 0 10px 0;\r\n  border: #6c757d 1px solid;\r\n  background-color: lighten($color: $primary-color, $amount: 60%);\r\n}\r\n\r\n/* Define styles for the list title */\r\n.todo-list > h2 {\r\n  font-size: 2rem;\r\n  color: $primary-color;\r\n  text-align: left;\r\n  margin: 0;\r\n  border-bottom: #6c757d 1px solid;\r\n  padding: 1rem;\r\n}\r\n\r\n/* Define styles for the task list */\r\n#tasks {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n/* Define styles for individual tasks */\r\n.task {\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: 1px solid $secondary-color;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n\r\n  &.completed {\r\n    text-decoration: line-through;\r\n    color: $secondary-color;\r\n  }\r\n\r\n  .checkbox {\r\n    margin-right: 1rem;\r\n  }\r\n}\r\n\r\n#clear-btn{\r\n  margin: 1rem auto;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 1.5rem;\r\n  opacity: 0.5;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n  display: block;\r\n\r\n  &:hover {\r\n    background-color: transparent;\r\n    color: $primary-color;\r\n  }\r\n\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -577,66 +577,88 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
 /* harmony import */ var _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tasks.js */ "./src/modules/tasks.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
-var populateTaskList = function populateTaskList() {
-  var taskList = document.getElementById('tasks');
 
-  // Clear any existing list items
-  taskList.innerHTML = '';
-
-  // Iterate over the tasks array and create a list item for each task
-  _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"].forEach(function (task) {
-    var listItem = document.createElement('li');
-    listItem.classList.add('task');
-
-    // Set the text content of the list item to the task description
-    // listItem.textContent = task.description;
-
-    var checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('checkbox');
-    checkbox.addEventListener('change', function () {
-      if (checkbox.checked) {
-        listItem.classList.add('completed');
-      } else {
-        listItem.classList.remove('completed');
+// UI c!lass handles ui tasks
+var UI = /*#__PURE__*/function () {
+  function UI() {
+    _classCallCheck(this, UI);
+  }
+  _createClass(UI, null, [{
+    key: "displayTasks",
+    value: function displayTasks() {
+      var storedTasks = [{
+        description: 'Task 1',
+        completed: false,
+        index: 0
+      }, {
+        description: 'Task 2',
+        completed: false,
+        index: 1
+      }];
+      var tasks = storedTasks;
+      tasks.forEach(function (task) {
+        return UI.addTaskToList(task);
+      });
+    }
+  }, {
+    key: "addTaskToList",
+    value: function addTaskToList(task) {
+      var list = document.querySelector('#tasks');
+      var row = document.createElement('li');
+      row.innerHTML = "\n        <input type=\"checkbox\" class=\"checkbox\">\n        ".concat(task.description, "\n        <label class=\"label\"><i class=\"fas fa-check\"></i></label>\n        <a href=\"#\"> <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square edit\" viewBox=\"0 0 16 16\">\n        <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>\n        <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>\n        </svg></a>\n        <a href=\"#\" id =\"delete-btn\" ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash3-fill delete\" viewBox=\"0 0 16 16\">\n        <path class=\"deleteFromPath\" d=\"M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z\"/>\n        </svg></a>\n        ");
+      list.appendChild(row);
+    }
+  }, {
+    key: "deleteTask",
+    value: function deleteTask(el) {
+      if (el.classList.contains('delete')) {
+        el.parentElement.parentElement.remove();
+      } else if (el.classList.contains('deleteFromPath')) {
+        el.parentElement.parentElement.parentElement.remove();
       }
-    });
-    var label = document.createElement('label');
-    label.classList.add('label');
-    var icon = document.createElement('i');
-    icon.classList.add('fas', 'fa-check');
-    label.appendChild(icon);
-    listItem.appendChild(checkbox);
-    listItem.appendChild(document.createTextNode(task.description));
-    listItem.appendChild(label);
+    }
+  }, {
+    key: "clearFields",
+    value: function clearFields() {
+      document.querySelector('#todo-input').value = '';
+    }
+  }]);
+  return UI;
+}(); // Event: Display Tasks
+document.addEventListener('DOMContentLoaded', UI.displayTasks);
+var index = 0;
 
-    // Add the list item to the task list
-    taskList.appendChild(listItem);
-  });
-  // create clear completed button
-  var clearCompletedButton = document.createElement('button');
-  clearCompletedButton.classList.add('clear-completed');
-  clearCompletedButton.textContent = 'Clear completed tasks';
-  clearCompletedButton.addEventListener('click', function () {
-    var completedTasks = document.querySelectorAll('.completed');
-    completedTasks.forEach(function (task) {
-      task.remove();
-    });
-  });
-  taskList.appendChild(clearCompletedButton);
-};
+// Event: Add a Task
+document.querySelector('#todo-form').addEventListener('submit', function (e) {
+  // Prevent actual submit
+  e.preventDefault();
 
-// save task to local storage
-var saveTask = function saveTask(task) {
-  var taskList = JSON.parse(localStorage.getItem('tasks'));
-  taskList.push(task);
-  localStorage.setItem('tasks', JSON.stringify(taskList));
-};
-window.onload = function () {
-  populateTaskList();
-};
+  // Get form values
+  var description = document.querySelector('#todo-input').value;
+  var completed = false;
+  index += 1;
+
+  // Instantiate task
+  var task = new _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"](description, completed, index);
+  // Add task to UI
+  UI.addTaskToList(task);
+
+  // Clear fields
+  UI.clearFields();
+});
+
+// Event: Remove a Task
+document.querySelector('#tasks').addEventListener('click', function (e) {
+  UI.deleteTask(e.target);
+});
 })();
 
 /******/ })()

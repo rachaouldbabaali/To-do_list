@@ -104,7 +104,7 @@ html {
   }
 }
 
-.clear-completed {
+#clear-btn{
   margin: 1rem auto;
   border: none;
   background-color: transparent;
@@ -118,4 +118,5 @@ html {
     background-color: transparent;
     color: $primary-color;
   }
+
 }
