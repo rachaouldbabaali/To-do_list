@@ -2,20 +2,30 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/generateJoks.js":
-/*!*****************************!*\
-  !*** ./src/generateJoks.js ***!
-  \*****************************/
+/***/ "./src/modules/tasks.js":
+/*!******************************!*\
+  !*** ./src/modules/tasks.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function generateJoks() {
-  return 'I am a jok';
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (generateJoks);
+var tasks = [{
+  description: 'Buy groceries',
+  completed: false,
+  index: 0
+}, {
+  description: 'Do laundry',
+  completed: true,
+  index: 1
+}, {
+  description: 'Clean the kitchen',
+  completed: false,
+  index: 2
+}];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tasks);
 
 /***/ }),
 
@@ -38,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Roboto\", sans-serif;\n}\n\nbody {\n  background-color: #fff;\n}\n\nh1 {\n  font-size: 3rem;\n  color: #dd5a5a;\n  text-align: center;\n  margin: 2rem 0;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAOA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;EACA,iCANc;AAAhB;;AASA;EACE,sBAZkB;AAMpB;;AASA;EACE,eAAA;EACA,cApBe;EAqBf,kBAAA;EACA,cAAA;AANF","sourcesContent":["$primary-color : #dd5a5a;\r\n$secondary-color : #f2f2f2;\r\n$tertiary-color : #333;\r\n$quaternary-color : #fff;\r\n\r\n$primary-font : 'Roboto', sans-serif;\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: $primary-font;\r\n}\r\n\r\nbody {\r\n  background-color: $quaternary-color;\r\n}\r\n\r\nh1 {\r\n  font-size: 3rem;\r\n  color: $primary-color;\r\n  text-align: center;\r\n  margin: 2rem 0;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Define variables for colors and font families */\nhtml {\n  box-sizing: border-box;\n  background-color: #f2ecef;\n}\n\n/* Define styles for the todo form */\n#todo-form {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 0;\n  padding: 0.5rem 1rem;\n  border-bottom: #6c757d 1px solid;\n}\n\n/* Define styles for the input field */\n#todo-input {\n  flex-grow: 1;\n  border: none;\n  font-family: Arial, sans-serif;\n  font-size: 1rem;\n  color: #6c757d;\n}\n#todo-input::placeholder {\n  color: #6c757d;\n  opacity: 0.5;\n}\n#todo-input:focus {\n  outline: none;\n  border-color: #855a71;\n}\n\n/* Define styles for the submit button */\n[type=submit] {\n  margin: 0 1rem;\n  padding: 0.5rem;\n  background-color: transparent;\n  border: none;\n  border-radius: 3px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n[type=submit]:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n\n/* Define styles for the todo list container */\n.todo-list {\n  margin: 0 auto;\n  max-width: 600px;\n  font-family: Arial, sans-serif;\n  box-shadow: #6c757d 0px 0px 10px 0px;\n  border: #6c757d 1px solid;\n  background-color: white;\n}\n\n/* Define styles for the list title */\n.todo-list > h2 {\n  font-size: 2rem;\n  color: #855a71;\n  text-align: left;\n  margin: 0;\n  border-bottom: #6c757d 1px solid;\n  padding: 1rem;\n}\n\n/* Define styles for the task list */\n#tasks {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/* Define styles for individual tasks */\n.task {\n  padding: 0.5rem 1rem;\n  border-bottom: 1px solid #6c757d;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n.task:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n.task.completed {\n  text-decoration: line-through;\n  color: #6c757d;\n}\n.task .checkbox {\n  margin-right: 1rem;\n}\n\n.clear-completed {\n  margin: 1rem auto;\n  border: none;\n  background-color: transparent;\n  font-size: 1.5rem;\n  opacity: 0.5;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n  display: block;\n}\n.clear-completed:hover {\n  background-color: transparent;\n  color: #855a71;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA,kDAAA;AAKA;EACE,sBAAA;EACA,yBAAA;AAHF;;AAMA,oCAAA;AACA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,SAAA;EACA,oBAAA;EACA,gCAAA;AAHF;;AAOA,sCAAA;AACA;EACE,YAAA;EACA,YAAA;EACA,8BArBY;EAsBZ,eAAA;EACA,cAzBgB;AAqBlB;AAME;EACE,cA5Bc;EA6Bd,YAAA;AAJJ;AAOE;EACE,aAAA;EACA,qBAnCY;AA8BhB;;AASA,wCAAA;AACA;EACE,cAAA;EACA,eAAA;EACA,6BAAA;EACA,YAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cAlDU;AA4Cd;;AASA,8CAAA;AACA;EACE,cAAA;EACA,gBAAA;EACA,8BAxDY;EAyDZ,oCAAA;EACA,yBAAA;EACA,uBAAA;AANF;;AASA,qCAAA;AACA;EACE,eAAA;EACA,cApEc;EAqEd,gBAAA;EACA,SAAA;EACA,gCAAA;EACA,aAAA;AANF;;AASA,oCAAA;AACA;EACE,gBAAA;EACA,SAAA;EACA,UAAA;AANF;;AASA,uCAAA;AACA;EACE,oBAAA;EACA,gCAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cAzFU;AAmFd;AASE;EACE,6BAAA;EACA,cA/Fc;AAwFlB;AASE;EACE,kBAAA;AAPJ;;AAWA;EACE,iBAAA;EACA,YAAA;EACA,6BAAA;EACA,iBAAA;EACA,YAAA;EACA,eAAA;EACA,6CAAA;EACA,cAAA;AARF;AAUE;EACE,6BAAA;EACA,cAnHY;AA2GhB","sourcesContent":["/* Define variables for colors and font families */\r\n$primary-color: #855a71;\r\n$secondary-color: #6c757d;\r\n$third-color: #ecf4fc;\r\n$font-family: Arial, sans-serif;\r\nhtml {\r\n  box-sizing: border-box;\r\n  background-color: lighten($primary-color, 50%);\r\n}\r\n\r\n/* Define styles for the todo form */\r\n#todo-form {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0;\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: $secondary-color 1px solid;\r\n\r\n}\r\n\r\n/* Define styles for the input field */\r\n#todo-input {\r\n  flex-grow: 1;\r\n  border: none;\r\n  font-family: $font-family;\r\n  font-size: 1rem;\r\n  color: $secondary-color;\r\n\r\n  &::placeholder {\r\n    color: $secondary-color;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  &:focus {\r\n    outline: none;\r\n    border-color: $primary-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the submit button */\r\n[type=\"submit\"] {\r\n  margin: 0 1rem;\r\n  padding: 0.5rem;\r\n  background-color: transparent;\r\n  border: none;\r\n  border-radius: 3px;\r\n  font-size: 1rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n  \r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n}\r\n/* Define styles for the todo list container */\r\n.todo-list {\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  font-family: $font-family;\r\n  box-shadow: $secondary-color 0px 0px 10px 0px;\r\n  border: #6c757d 1px solid;\r\n  background-color: lighten($color: $primary-color, $amount: 60%);\r\n}\r\n\r\n/* Define styles for the list title */\r\n.todo-list > h2 {\r\n  font-size: 2rem;\r\n  color: $primary-color;\r\n  text-align: left;\r\n  margin: 0;\r\n  border-bottom: #6c757d 1px solid;\r\n  padding: 1rem;\r\n}\r\n\r\n/* Define styles for the task list */\r\n#tasks {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0; \r\n}\r\n\r\n/* Define styles for individual tasks */\r\n.task {\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: 1px solid $secondary-color;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n\r\n  &.completed {\r\n    text-decoration: line-through;\r\n    color: $secondary-color;\r\n  }\r\n  .checkbox {\r\n    margin-right: 1rem;\r\n  }\r\n}\r\n\r\n.clear-completed {\r\n  margin: 1rem auto;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 1.5rem;\r\n  opacity: 0.5;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n  display: block;\r\n\r\n  &:hover {\r\n    background-color: transparent;\r\n    color: $primary-color;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -483,16 +493,6 @@ function styleTagTransform(css, styleElement) {
 }
 module.exports = styleTagTransform;
 
-/***/ }),
-
-/***/ "./src/assets/favicon.png":
-/*!********************************!*\
-  !*** ./src/assets/favicon.png ***!
-  \********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/favicon].png";
-
 /***/ })
 
 /******/ 	});
@@ -546,18 +546,6 @@ module.exports = __webpack_require__.p + "images/favicon].png";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -574,29 +562,6 @@ module.exports = __webpack_require__.p + "images/favicon].png";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src;
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) {
-/******/ 					var i = scripts.length - 1;
-/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -610,16 +575,68 @@ var __webpack_exports__ = {};
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _generateJoks_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generateJoks.js */ "./src/generateJoks.js");
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
-/* harmony import */ var _assets_favicon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/favicon.png */ "./src/assets/favicon.png");
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
+/* harmony import */ var _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tasks.js */ "./src/modules/tasks.js");
 
 
+var populateTaskList = function populateTaskList() {
+  var taskList = document.getElementById('tasks');
 
-(0,_generateJoks_js__WEBPACK_IMPORTED_MODULE_0__["default"])();
-var img = document.createElement('img');
-img.src = _assets_favicon_png__WEBPACK_IMPORTED_MODULE_2__;
-document.body.appendChild(img);
+  // Clear any existing list items
+  taskList.innerHTML = '';
+
+  // Iterate over the tasks array and create a list item for each task
+  _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"].forEach(function (task) {
+    var listItem = document.createElement('li');
+    listItem.classList.add('task');
+
+    // Set the text content of the list item to the task description
+    // listItem.textContent = task.description;
+
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.classList.add('checkbox');
+    checkbox.addEventListener('change', function () {
+      if (checkbox.checked) {
+        listItem.classList.add('completed');
+      } else {
+        listItem.classList.remove('completed');
+      }
+    });
+    var label = document.createElement('label');
+    label.classList.add('label');
+    var icon = document.createElement('i');
+    icon.classList.add('fas', 'fa-check');
+    label.appendChild(icon);
+    listItem.appendChild(checkbox);
+    listItem.appendChild(document.createTextNode(task.description));
+    listItem.appendChild(label);
+
+    // Add the list item to the task list
+    taskList.appendChild(listItem);
+  });
+  // create clear completed button
+  var clearCompletedButton = document.createElement('button');
+  clearCompletedButton.classList.add('clear-completed');
+  clearCompletedButton.textContent = 'Clear completed tasks';
+  clearCompletedButton.addEventListener('click', function () {
+    var completedTasks = document.querySelectorAll('.completed');
+    completedTasks.forEach(function (task) {
+      task.remove();
+    });
+  });
+  taskList.appendChild(clearCompletedButton);
+};
+
+// save task to local storage
+var saveTask = function saveTask(task) {
+  var taskList = JSON.parse(localStorage.getItem('tasks'));
+  taskList.push(task);
+  localStorage.setItem('tasks', JSON.stringify(taskList));
+};
+window.onload = function () {
+  populateTaskList();
+};
 })();
 
 /******/ })()

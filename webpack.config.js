@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: 'development',
@@ -45,15 +45,35 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
+      // the url-loader uses DataUrls.
+      // the file-loader emits files.
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              mimetype: 'application/font-woff',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [
+          { loader: 'file-loader' },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Webpack 4 Starter',
       filename: 'index.html',
-      template: path.resolve(__dirname, 'src', 'template.html'),
+      template: path.resolve(__dirname, 'src', 'index.html'),
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 
 };
