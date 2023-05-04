@@ -83,7 +83,7 @@ html {
 }
 
 /* Define styles for individual tasks */
-.task {
+li {
   padding: 0.5rem 1rem;
   border-bottom: 1px solid $secondary-color;
   cursor: pointer;
@@ -119,4 +119,10 @@ html {
     color: $primary-color;
   }
 
+}
+.insert-task {
+  background-color: rgb(250, 66, 66);
+  color: white;
+  padding: 0.5rem 1rem;
+  
 }

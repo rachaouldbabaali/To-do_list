@@ -47,8 +47,23 @@ class UI {
     }
   }
 
+  static showAlert(message, className) {
+    const div = document.createElement('div');
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    const msg = document.querySelector('.msg');
+    msg.appendChild(div);
+    // Vanish in 3 seconds
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
+  }
+
   static clearFields() {
     document.querySelector('#todo-input').value = '';
+  }
+
+  static clearCopmleted() {
+    const completedTasks = document.querySelectorAll('.completed');
+    completedTasks.forEach((task) => task.remove());
   }
 }
 
@@ -66,11 +81,15 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
   const completed = false;
 
   index += 1;
-
+  // validate
+  if (description === '') {
+    UI.showAlert('Please add a task', 'danger');
+  }
   // Instantiate task
   const task = new Task(description, completed, index);
   // Add task to UI
   UI.addTaskToList(task);
+  UI.showAlert('Task Added', 'success');
 
   // Clear fields
   UI.clearFields();
@@ -79,5 +98,21 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
 // Event: Remove a Task
 document.querySelector('#tasks').addEventListener('click', (e) => {
   UI.deleteTask(e.target);
+  UI.showAlert('Task Removed', 'warning');
 });
 
+// Event: add completed class
+document.querySelector('#tasks').addEventListener('click', (e) => {
+  if (e.target.classList.contains('checkbox')) {
+    e.target.parentElement.classList.toggle('completed');
+    e.completed = true;
+  } else if (e.target.classList.contains('fa-check')) {
+    e.target.parentElement.parentElement.classList.toggle('completed');
+    e.completed = false;
+  }
+});
+
+// Event: delete all completed tasks
+document.querySelector('#clear-btn').addEventListener('click', () => {
+  UI.clearCopmleted();
+});

@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Define variables for colors and font families */\nhtml {\n  box-sizing: border-box;\n  background-color: #f2ecef;\n}\n\n/* Define styles for the todo form */\n#todo-form {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 0;\n  padding: 0.5rem 1rem;\n  border-bottom: #6c757d 1px solid;\n}\n\n/* Define styles for the input field */\n#todo-input {\n  flex-grow: 1;\n  border: none;\n  font-family: arial, sans-serif;\n  font-size: 1rem;\n  color: #6c757d;\n}\n#todo-input::placeholder {\n  color: #6c757d;\n  opacity: 0.5;\n}\n#todo-input:focus {\n  outline: none;\n  border-color: #855a71;\n}\n\n/* Define styles for the submit button */\n[type=submit] {\n  margin: 0 1rem;\n  padding: 0.5rem;\n  background-color: transparent;\n  border: none;\n  border-radius: 3px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n[type=submit]:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n\n/* Define styles for the todo list container */\n.todo-list {\n  margin: 0 auto;\n  max-width: 600px;\n  font-family: arial, sans-serif;\n  box-shadow: #6c757d 0 0 10px 0;\n  border: #6c757d 1px solid;\n  background-color: white;\n}\n\n/* Define styles for the list title */\n.todo-list > h2 {\n  font-size: 2rem;\n  color: #855a71;\n  text-align: left;\n  margin: 0;\n  border-bottom: #6c757d 1px solid;\n  padding: 1rem;\n}\n\n/* Define styles for the task list */\n#tasks {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/* Define styles for individual tasks */\n.task {\n  padding: 0.5rem 1rem;\n  border-bottom: 1px solid #6c757d;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n.task:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n.task.completed {\n  text-decoration: line-through;\n  color: #6c757d;\n}\n.task .checkbox {\n  margin-right: 1rem;\n}\n\n#clear-btn {\n  margin: 1rem auto;\n  border: none;\n  background-color: transparent;\n  font-size: 1.5rem;\n  opacity: 0.5;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n  display: block;\n}\n#clear-btn:hover {\n  background-color: transparent;\n  color: #855a71;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA,kDAAA;AAMA;EACE,sBAAA;EACA,yBAAA;AAJF;;AAOA,oCAAA;AACA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,SAAA;EACA,oBAAA;EACA,gCAAA;AAJF;;AAOA,sCAAA;AACA;EACE,YAAA;EACA,YAAA;EACA,8BArBY;EAsBZ,eAAA;EACA,cAzBgB;AAqBlB;AAME;EACE,cA5Bc;EA6Bd,YAAA;AAJJ;AAOE;EACE,aAAA;EACA,qBAnCY;AA8BhB;;AASA,wCAAA;AACA;EACE,cAAA;EACA,eAAA;EACA,6BAAA;EACA,YAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cAlDU;AA4Cd;;AAUA,8CAAA;AACA;EACE,cAAA;EACA,gBAAA;EACA,8BAzDY;EA0DZ,8BAAA;EACA,yBAAA;EACA,uBAAA;AAPF;;AAUA,qCAAA;AACA;EACE,eAAA;EACA,cArEc;EAsEd,gBAAA;EACA,SAAA;EACA,gCAAA;EACA,aAAA;AAPF;;AAUA,oCAAA;AACA;EACE,gBAAA;EACA,SAAA;EACA,UAAA;AAPF;;AAUA,uCAAA;AACA;EACE,oBAAA;EACA,gCAAA;EACA,eAAA;EACA,6CAAA;AAPF;AASE;EACE,yBAAA;EACA,cA1FU;AAmFd;AAUE;EACE,6BAAA;EACA,cAhGc;AAwFlB;AAWE;EACE,kBAAA;AATJ;;AAaA;EACE,iBAAA;EACA,YAAA;EACA,6BAAA;EACA,iBAAA;EACA,YAAA;EACA,eAAA;EACA,6CAAA;EACA,cAAA;AAVF;AAYE;EACE,6BAAA;EACA,cArHY;AA2GhB","sourcesContent":["/* Define variables for colors and font families */\r\n$primary-color: #855a71;\r\n$secondary-color: #6c757d;\r\n$third-color: #ecf4fc;\r\n$font-family: arial, sans-serif;\r\n\r\nhtml {\r\n  box-sizing: border-box;\r\n  background-color: lighten($primary-color, 50%);\r\n}\r\n\r\n/* Define styles for the todo form */\r\n#todo-form {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0;\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: $secondary-color 1px solid;\r\n}\r\n\r\n/* Define styles for the input field */\r\n#todo-input {\r\n  flex-grow: 1;\r\n  border: none;\r\n  font-family: $font-family;\r\n  font-size: 1rem;\r\n  color: $secondary-color;\r\n\r\n  &::placeholder {\r\n    color: $secondary-color;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  &:focus {\r\n    outline: none;\r\n    border-color: $primary-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the submit button */\r\n[type=\"submit\"] {\r\n  margin: 0 1rem;\r\n  padding: 0.5rem;\r\n  background-color: transparent;\r\n  border: none;\r\n  border-radius: 3px;\r\n  font-size: 1rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the todo list container */\r\n.todo-list {\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  font-family: $font-family;\r\n  box-shadow: $secondary-color 0 0 10px 0;\r\n  border: #6c757d 1px solid;\r\n  background-color: lighten($color: $primary-color, $amount: 60%);\r\n}\r\n\r\n/* Define styles for the list title */\r\n.todo-list > h2 {\r\n  font-size: 2rem;\r\n  color: $primary-color;\r\n  text-align: left;\r\n  margin: 0;\r\n  border-bottom: #6c757d 1px solid;\r\n  padding: 1rem;\r\n}\r\n\r\n/* Define styles for the task list */\r\n#tasks {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n/* Define styles for individual tasks */\r\n.task {\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: 1px solid $secondary-color;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n\r\n  &.completed {\r\n    text-decoration: line-through;\r\n    color: $secondary-color;\r\n  }\r\n\r\n  .checkbox {\r\n    margin-right: 1rem;\r\n  }\r\n}\r\n\r\n#clear-btn{\r\n  margin: 1rem auto;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 1.5rem;\r\n  opacity: 0.5;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n  display: block;\r\n\r\n  &:hover {\r\n    background-color: transparent;\r\n    color: $primary-color;\r\n  }\r\n\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Define variables for colors and font families */\nhtml {\n  box-sizing: border-box;\n  background-color: #f2ecef;\n}\n\n/* Define styles for the todo form */\n#todo-form {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 0;\n  padding: 0.5rem 1rem;\n  border-bottom: #6c757d 1px solid;\n}\n\n/* Define styles for the input field */\n#todo-input {\n  flex-grow: 1;\n  border: none;\n  font-family: arial, sans-serif;\n  font-size: 1rem;\n  color: #6c757d;\n}\n#todo-input::placeholder {\n  color: #6c757d;\n  opacity: 0.5;\n}\n#todo-input:focus {\n  outline: none;\n  border-color: #855a71;\n}\n\n/* Define styles for the submit button */\n[type=submit] {\n  margin: 0 1rem;\n  padding: 0.5rem;\n  background-color: transparent;\n  border: none;\n  border-radius: 3px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\n[type=submit]:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\n\n/* Define styles for the todo list container */\n.todo-list {\n  margin: 0 auto;\n  max-width: 600px;\n  font-family: arial, sans-serif;\n  box-shadow: #6c757d 0 0 10px 0;\n  border: #6c757d 1px solid;\n  background-color: white;\n}\n\n/* Define styles for the list title */\n.todo-list > h2 {\n  font-size: 2rem;\n  color: #855a71;\n  text-align: left;\n  margin: 0;\n  border-bottom: #6c757d 1px solid;\n  padding: 1rem;\n}\n\n/* Define styles for the task list */\n#tasks {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/* Define styles for individual tasks */\nli {\n  padding: 0.5rem 1rem;\n  border-bottom: 1px solid #6c757d;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n}\nli:hover {\n  background-color: #c9afbd;\n  color: #ecf4fc;\n}\nli.completed {\n  text-decoration: line-through;\n  color: #6c757d;\n}\nli .checkbox {\n  margin-right: 1rem;\n}\n\n#clear-btn {\n  margin: 1rem auto;\n  border: none;\n  background-color: transparent;\n  font-size: 1.5rem;\n  opacity: 0.5;\n  cursor: pointer;\n  transition: background-color 0.2s ease-in-out;\n  display: block;\n}\n#clear-btn:hover {\n  background-color: transparent;\n  color: #855a71;\n}\n\n.insert-task {\n  background-color: rgb(250, 66, 66);\n  color: white;\n  padding: 0.5rem 1rem;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA,kDAAA;AAMA;EACE,sBAAA;EACA,yBAAA;AAJF;;AAOA,oCAAA;AACA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,SAAA;EACA,oBAAA;EACA,gCAAA;AAJF;;AAOA,sCAAA;AACA;EACE,YAAA;EACA,YAAA;EACA,8BArBY;EAsBZ,eAAA;EACA,cAzBgB;AAqBlB;AAME;EACE,cA5Bc;EA6Bd,YAAA;AAJJ;AAOE;EACE,aAAA;EACA,qBAnCY;AA8BhB;;AASA,wCAAA;AACA;EACE,cAAA;EACA,eAAA;EACA,6BAAA;EACA,YAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;EACA,6CAAA;AANF;AAQE;EACE,yBAAA;EACA,cAlDU;AA4Cd;;AAUA,8CAAA;AACA;EACE,cAAA;EACA,gBAAA;EACA,8BAzDY;EA0DZ,8BAAA;EACA,yBAAA;EACA,uBAAA;AAPF;;AAUA,qCAAA;AACA;EACE,eAAA;EACA,cArEc;EAsEd,gBAAA;EACA,SAAA;EACA,gCAAA;EACA,aAAA;AAPF;;AAUA,oCAAA;AACA;EACE,gBAAA;EACA,SAAA;EACA,UAAA;AAPF;;AAUA,uCAAA;AACA;EACE,oBAAA;EACA,gCAAA;EACA,eAAA;EACA,6CAAA;AAPF;AASE;EACE,yBAAA;EACA,cA1FU;AAmFd;AAUE;EACE,6BAAA;EACA,cAhGc;AAwFlB;AAWE;EACE,kBAAA;AATJ;;AAaA;EACE,iBAAA;EACA,YAAA;EACA,6BAAA;EACA,iBAAA;EACA,YAAA;EACA,eAAA;EACA,6CAAA;EACA,cAAA;AAVF;AAYE;EACE,6BAAA;EACA,cArHY;AA2GhB;;AAcA;EACE,kCAAA;EACA,YAAA;EACA,oBAAA;AAXF","sourcesContent":["/* Define variables for colors and font families */\r\n$primary-color: #855a71;\r\n$secondary-color: #6c757d;\r\n$third-color: #ecf4fc;\r\n$font-family: arial, sans-serif;\r\n\r\nhtml {\r\n  box-sizing: border-box;\r\n  background-color: lighten($primary-color, 50%);\r\n}\r\n\r\n/* Define styles for the todo form */\r\n#todo-form {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0;\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: $secondary-color 1px solid;\r\n}\r\n\r\n/* Define styles for the input field */\r\n#todo-input {\r\n  flex-grow: 1;\r\n  border: none;\r\n  font-family: $font-family;\r\n  font-size: 1rem;\r\n  color: $secondary-color;\r\n\r\n  &::placeholder {\r\n    color: $secondary-color;\r\n    opacity: 0.5;\r\n  }\r\n\r\n  &:focus {\r\n    outline: none;\r\n    border-color: $primary-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the submit button */\r\n[type=\"submit\"] {\r\n  margin: 0 1rem;\r\n  padding: 0.5rem;\r\n  background-color: transparent;\r\n  border: none;\r\n  border-radius: 3px;\r\n  font-size: 1rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n}\r\n\r\n/* Define styles for the todo list container */\r\n.todo-list {\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  font-family: $font-family;\r\n  box-shadow: $secondary-color 0 0 10px 0;\r\n  border: #6c757d 1px solid;\r\n  background-color: lighten($color: $primary-color, $amount: 60%);\r\n}\r\n\r\n/* Define styles for the list title */\r\n.todo-list > h2 {\r\n  font-size: 2rem;\r\n  color: $primary-color;\r\n  text-align: left;\r\n  margin: 0;\r\n  border-bottom: #6c757d 1px solid;\r\n  padding: 1rem;\r\n}\r\n\r\n/* Define styles for the task list */\r\n#tasks {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n/* Define styles for individual tasks */\r\nli {\r\n  padding: 0.5rem 1rem;\r\n  border-bottom: 1px solid $secondary-color;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n\r\n  &:hover {\r\n    background-color: lighten($primary-color, 30%);\r\n    color: $third-color;\r\n  }\r\n\r\n  &.completed {\r\n    text-decoration: line-through;\r\n    color: $secondary-color;\r\n  }\r\n\r\n  .checkbox {\r\n    margin-right: 1rem;\r\n  }\r\n}\r\n\r\n#clear-btn{\r\n  margin: 1rem auto;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 1.5rem;\r\n  opacity: 0.5;\r\n  cursor: pointer;\r\n  transition: background-color 0.2s ease-in-out;\r\n  display: block;\r\n\r\n  &:hover {\r\n    background-color: transparent;\r\n    color: $primary-color;\r\n  }\r\n\r\n}\r\n.insert-task {\r\n  background-color: rgb(250, 66, 66);\r\n  color: white;\r\n  padding: 0.5rem 1rem;\r\n  \r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -626,9 +626,30 @@ var UI = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "showAlert",
+    value: function showAlert(message, className) {
+      var div = document.createElement('div');
+      div.className = "alert alert-".concat(className);
+      div.appendChild(document.createTextNode(message));
+      var msg = document.querySelector('.msg');
+      msg.appendChild(div);
+      // Vanish in 3 seconds
+      setTimeout(function () {
+        return document.querySelector('.alert').remove();
+      }, 3000);
+    }
+  }, {
     key: "clearFields",
     value: function clearFields() {
       document.querySelector('#todo-input').value = '';
+    }
+  }, {
+    key: "clearCopmleted",
+    value: function clearCopmleted() {
+      var completedTasks = document.querySelectorAll('.completed');
+      completedTasks.forEach(function (task) {
+        return task.remove();
+      });
     }
   }]);
   return UI;
@@ -645,11 +666,15 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
   var description = document.querySelector('#todo-input').value;
   var completed = false;
   index += 1;
-
+  // validate
+  if (description === '') {
+    UI.showAlert('Please add a task', 'danger');
+  }
   // Instantiate task
   var task = new _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__["default"](description, completed, index);
   // Add task to UI
   UI.addTaskToList(task);
+  UI.showAlert('Task Added', 'success');
 
   // Clear fields
   UI.clearFields();
@@ -658,14 +683,23 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
 // Event: Remove a Task
 document.querySelector('#tasks').addEventListener('click', function (e) {
   UI.deleteTask(e.target);
+  UI.showAlert('Task Removed', 'warning');
 });
 
-// Event: Edit a Task
+// Event: add completed class
 document.querySelector('#tasks').addEventListener('click', function (e) {
-  if (e.target.classList.contains('edit')) {
-    var description = prompt('Edit your task');
-    e.target.parentElement.parentElement.childNodes[3].nodeValue = description;
+  if (e.target.classList.contains('checkbox')) {
+    e.target.parentElement.classList.toggle('completed');
+    e.completed = true;
+  } else if (e.target.classList.contains('fa-check')) {
+    e.target.parentElement.parentElement.classList.toggle('completed');
+    e.completed = false;
   }
+});
+
+// Event: delete all completed tasks
+document.querySelector('#clear-btn').addEventListener('click', function () {
+  UI.clearCopmleted();
 });
 })();
 
