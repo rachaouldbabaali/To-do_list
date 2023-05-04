@@ -659,6 +659,14 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
 document.querySelector('#tasks').addEventListener('click', function (e) {
   UI.deleteTask(e.target);
 });
+
+// Event: Edit a Task
+document.querySelector('#tasks').addEventListener('click', function (e) {
+  if (e.target.classList.contains('edit')) {
+    var description = prompt('Edit your task');
+    e.target.parentElement.parentElement.childNodes[3].nodeValue = description;
+  }
+});
 })();
 
 /******/ })()

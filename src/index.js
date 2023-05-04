@@ -80,3 +80,4 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
 document.querySelector('#tasks').addEventListener('click', (e) => {
   UI.deleteTask(e.target);
 });
+
