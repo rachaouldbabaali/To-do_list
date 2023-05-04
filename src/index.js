@@ -44,7 +44,6 @@ class UI {
     setTimeout(() => document.querySelector('.alert').remove(), 3000);
   }
 
-
   static clearFields() {
     document.querySelector('#todo-input').value = '';
   }
@@ -88,10 +87,8 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
 
 // Event: Remove a Task
 document.querySelector('#tasks').addEventListener('click', (e) => {
-    e.preventDefault();
+  e.preventDefault();
   UI.deleteTask(e.target);
-  // Remove task from store
-  Store.removeTask(e.target);
+    // Remove task from localStorage
+    Store.removeTask(e.target.parentElement.parentElement.children.id);
 });
-
-

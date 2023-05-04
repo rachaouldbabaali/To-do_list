@@ -90,9 +90,10 @@ var Task = /*#__PURE__*/_createClass(
 // eslint-disable-next-line no-unused-vars
 function Task(description, completed, index) {
   _classCallCheck(this, Task);
+  Task.index += 1;
   this.description = description;
   this.completed = completed;
-  this.index = index;
+  this.index = Task.index;
 });
 _defineProperty(Task, "index", 0);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Task);
@@ -747,8 +748,8 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
 document.querySelector('#tasks').addEventListener('click', function (e) {
   e.preventDefault();
   UI.deleteTask(e.target);
-  // Remove task from store
-  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(e.target);
+  // Remove task from localStorage
+  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(e.target.parentElement.parentElement.children.id);
 });
 })();
 

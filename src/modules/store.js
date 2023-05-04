@@ -21,8 +21,6 @@ class Store {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  
-
   // check if task is already in the list
   static checkTask(description) {
     const tasks = Store.getTasks();

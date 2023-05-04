@@ -4,9 +4,10 @@ class Task {
 
   // eslint-disable-next-line no-unused-vars
   constructor(description, completed, index) {
+    Task.index += 1;
     this.description = description;
     this.completed = completed;
-    this.index = index;
+    this.index = Task.index;
   }
 }
 export default Task;
