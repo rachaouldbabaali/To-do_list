@@ -2,6 +2,71 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/modules/store.js":
+/*!******************************!*\
+  !*** ./src/modules/store.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var Store = /*#__PURE__*/function () {
+  function Store() {
+    _classCallCheck(this, Store);
+  }
+  _createClass(Store, null, [{
+    key: "getTasks",
+    value: function getTasks() {
+      var tasks;
+      if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+      } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+      }
+      return tasks;
+    }
+  }, {
+    key: "addTask",
+    value: function addTask(task) {
+      var tasks = this.getTasks();
+      tasks.push(task);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }, {
+    key: "removeTask",
+    value: function removeTask(index) {
+      var tasks = this.getTasks();
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }, {
+    key: "getTaskByIndex",
+    value: function getTaskByIndex(index) {
+      var tasks = this.getTasks();
+      return tasks[index];
+    }
+  }, {
+    key: "editTask",
+    value: function editTask(index, description) {
+      var tasks = this.getTasks();
+      tasks[index].description = description;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }]);
+  return Store;
+}();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Store);
+
+/***/ }),
+
 /***/ "./src/modules/tasks.js":
 /*!******************************!*\
   !*** ./src/modules/tasks.js ***!
@@ -577,12 +642,14 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
 /* harmony import */ var _modules_tasks_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tasks.js */ "./src/modules/tasks.js");
+/* harmony import */ var _modules_store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/store.js */ "./src/modules/store.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
 
 
 
@@ -594,16 +661,7 @@ var UI = /*#__PURE__*/function () {
   _createClass(UI, null, [{
     key: "displayTasks",
     value: function displayTasks() {
-      var storedTasks = [{
-        description: 'Task 1',
-        completed: false,
-        index: 0
-      }, {
-        description: 'Task 2',
-        completed: false,
-        index: 1
-      }];
-      var tasks = storedTasks;
+      var tasks = _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].getTasks();
       tasks.forEach(function (task) {
         return UI.addTaskToList(task);
       });
@@ -675,6 +733,8 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
   // Add task to UI
   UI.addTaskToList(task);
   UI.showAlert('Task Added', 'success');
+  // Add task to store
+  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].addTask(task);
 
   // Clear fields
   UI.clearFields();
@@ -683,7 +743,28 @@ document.querySelector('#todo-form').addEventListener('submit', function (e) {
 // Event: Remove a Task
 document.querySelector('#tasks').addEventListener('click', function (e) {
   UI.deleteTask(e.target);
-  UI.showAlert('Task Removed', 'warning');
+  // Remove task from store
+  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(e.target.parentElement.parentElement);
+});
+
+// event: update task index
+document.querySelector('#tasks').addEventListener('click', function (e) {
+  if (e.target.classList.contains('checkbox')) {
+    e.target.parentElement.parentElement.setAttribute('data-index', index);
+  } else if (e.target.classList.contains('fa-check')) {
+    e.target.parentElement.parentElement.parentElement.setAttribute('data-index', index);
+  }
+});
+
+// edit old task
+document.querySelector('#tasks').addEventListener('click', function (e) {
+  if (e.target.classList.contains('edit')) {
+    var oldTask = e.target.parentElement.parentElement.parentElement;
+    var oldTaskDescription = oldTask.querySelector('.description').textContent;
+    document.querySelector('#todo-input').value = oldTaskDescription;
+    oldTask.remove();
+    UI.showAlert('Task Edited', 'success');
+  }
 });
 
 // Event: add completed class

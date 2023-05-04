@@ -1,23 +1,11 @@
 import './styles/main.scss';
 import Task from './modules/tasks.js';
+import Store from './modules/store.js';
 
 // UI c!lass handles ui tasks
 class UI {
   static displayTasks() {
-    const storedTasks = [
-      {
-        description: 'Task 1',
-        completed: false,
-        index: 0,
-      },
-      {
-        description: 'Task 2',
-        completed: false,
-        index: 1,
-      },
-    ];
-
-    const tasks = storedTasks;
+    const tasks = Store.getTasks();
     tasks.forEach((task) => UI.addTaskToList(task));
   }
 
@@ -90,6 +78,8 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
   // Add task to UI
   UI.addTaskToList(task);
   UI.showAlert('Task Added', 'success');
+  // Add task to store
+  Store.addTask(task);
 
   // Clear fields
   UI.clearFields();
@@ -98,8 +88,22 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
 // Event: Remove a Task
 document.querySelector('#tasks').addEventListener('click', (e) => {
   UI.deleteTask(e.target);
-  UI.showAlert('Task Removed', 'warning');
+  // Remove task from store
+  Store.removeTask(e.target.parentElement.parentElement);
 });
+
+
+// event: update task index
+document.querySelector('#tasks').addEventListener('click', (e) => {
+    if (e.target.classList.contains('checkbox')) {
+        e.target.parentElement.parentElement.setAttribute('data-index', index);
+    } else if (e.target.classList.contains('fa-check')) {
+        e.target.parentElement.parentElement.parentElement.setAttribute('data-index', index);
+    }
+});
+
+
+
 
 // Event: add completed class
 document.querySelector('#tasks').addEventListener('click', (e) => {
