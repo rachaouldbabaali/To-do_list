@@ -1,52 +1,105 @@
 import './styles/main.scss';
-import tasks from './modules/tasks.js';
+import Task from './modules/tasks.js';
+import Store from './modules/store.js';
+// UI c!lass handles ui tasks
+class UI {
+  static displayTasks() {
+    const tasks = Store.getTasks();
+    tasks.forEach((task) => UI.addTaskToList(task));
+  }
 
-const populateTaskList = () => {
-  const taskList = document.getElementById('tasks');
+  static addTaskToList(task) {
+    const list = document.querySelector('#tasks');
+    const row = document.createElement('li');
+    row.innerHTML = `
+        <input type="checkbox" class="checkbox">
+        <input class="task-description" id="${task.index}" value= "${task.description}">  
+        <label class="label"><i class="fas fa-check"></i></label>
+        <a href="#" id ="delete-btn" data-task=${task.index}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill delete" viewBox="0 0 16 16">
+        <path class="deleteFromPath" d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+        </svg></a>
+        `;
+    list.appendChild(row);
+  }
 
-  // Clear any existing list items
-  taskList.innerHTML = '';
+  static deleteTask(el) {
+    el.parentNode.remove();
+  }
 
-  // Iterate over the tasks array and create a list item for each task
+  static showAlert(message, className) {
+    const div = document.createElement('div');
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    const msg = document.querySelector('.msg');
+    msg.appendChild(div);
+    // Vanish in 3 seconds
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
+  }
+
+  static clearFields() {
+    document.querySelector('#todo-input').value = '';
+  }
+
+  static editTask(index) {
+    const task = Store.getTasks(index);
+    const input = document.querySelector('.task-description');
+    task.description = input.value;
+  }
+}
+
+// Event: Display Tasks
+// document.addEventListener('DOMContentLoaded', UI.displayTasks);
+document.addEventListener('DOMContentLoaded', () => {
+  const tasks = Store.getTasks();
   tasks.forEach((task) => {
-    const listItem = document.createElement('li');
-    listItem.classList.add('task');
-
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('checkbox');
-    checkbox.addEventListener('change', () => {
-      if (checkbox.checked) {
-        listItem.classList.add('completed');
-      } else {
-        listItem.classList.remove('completed');
-      }
-    });
-    const label = document.createElement('label');
-    label.classList.add('label');
-    const icon = document.createElement('i');
-    icon.classList.add('fas', 'fa-check');
-    label.appendChild(icon);
-    listItem.appendChild(checkbox);
-    listItem.appendChild(document.createTextNode(task.description));
-    listItem.appendChild(label);
-
-    // Add the list item to the task list
-    taskList.appendChild(listItem);
+    UI.addTaskToList(task);
   });
-  // create clear completed button
-  const clearCompletedButton = document.createElement('button');
-  clearCompletedButton.classList.add('clear-completed');
-  clearCompletedButton.textContent = 'Clear completed tasks';
-  clearCompletedButton.addEventListener('click', () => {
-    const completedTasks = document.querySelectorAll('.completed');
-    completedTasks.forEach((task) => {
-      task.remove();
-    });
-  });
-  taskList.appendChild(clearCompletedButton);
-};
+});
 
-window.onload = () => {
-  populateTaskList();
-};
+// Event: Add a Task
+document.querySelector('#todo-form').addEventListener('submit', (e) => {
+  // Prevent actual submit
+  e.preventDefault();
+
+  // Get form values
+  const description = document.querySelector('#todo-input').value;
+  const completed = false;
+  // validate
+  if (description === '') {
+    UI.showAlert('Please add a task', 'danger');
+  } else if (Store.checkTask(description)) {
+    UI.showAlert('Task already in the list', 'danger');
+  } else {
+  // Instantiate task
+    const task = new Task(description, completed);
+    // Add task to UI
+    UI.addTaskToList(task);
+    UI.showAlert('Task Added', 'success');
+    // Add task to store
+    Store.addTask(task);
+
+    // Clear fields
+    UI.clearFields();
+  }
+});
+
+// Event: Remove a Task
+document.querySelector('#tasks').addEventListener('click', (e) => {
+  e.preventDefault();
+  const parentBtn = e.target.closest('#delete-btn');
+  const taskIndex = parentBtn.dataset.task;
+  UI.deleteTask(parentBtn);
+  // Remove task from localStorage
+  Store.removeTask(taskIndex);
+});
+
+// Event: Edit a Task on change
+document.querySelector('#tasks').addEventListener('change', (e) => {
+  e.preventDefault();
+  // get the index of the task
+  const index = e.target.id;
+  UI.editTask(index, e.target.value);
+  UI.showAlert('Task Updated', 'success');
+  // Update task in localStorage
+  Store.updateTask(index, e.target.value);
+});

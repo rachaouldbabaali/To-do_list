@@ -1,18 +1,13 @@
-const tasks = [
-  {
-    description: 'Buy groceries',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Do laundry',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'Clean the kitchen',
-    completed: false,
-    index: 2,
-  },
-];
-export default tasks;
+// create class for tasks
+class Task {
+  static index = 0;
+
+  // eslint-disable-next-line no-unused-vars
+  constructor(description, completed, index) {
+    Task.index += 1;
+    this.description = description;
+    this.completed = completed;
+    this.index = Task.index;
+  }
+}
+export default Task;
