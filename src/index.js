@@ -109,11 +109,6 @@ document.querySelector('#tasks').addEventListener('change', (e) => {
 
 
 
-
-
-
-    
-
 // the function of checkebox
 document.querySelector('#tasks').addEventListener('click', (e) => {
   e.preventDefault();
@@ -126,6 +121,7 @@ document.querySelector('#tasks').addEventListener('click', (e) => {
   } else {
     parentBtn.classList.remove('completed');
     task.completed = !task.completed;
+  
   }
   Store.updateCheckbox(taskIndex, task.completed);
 });
@@ -135,10 +131,10 @@ document.querySelector('#clear-btn').addEventListener('click', (e) => {
   e.preventDefault();
   // remove selected tasks from localStorage
   Store.clearCompletedTasks();
-  
-  
-  // clear the UI
-  const list = document.querySelector('#tasks');
-  list.innerHTML = '';
+  // clear all completed tasks from UI
+  const completedTasks = document.querySelectorAll('.completed');
+  completedTasks.forEach((task) => {
+    task.parentNode.remove();
+  });
   UI.showAlert('All completed tasks have been removed', 'success');
 });

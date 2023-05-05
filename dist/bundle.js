@@ -832,10 +832,11 @@ document.querySelector('#clear-btn').addEventListener('click', function (e) {
   e.preventDefault();
   // remove selected tasks from localStorage
   _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].clearCompletedTasks();
-
-  // clear the UI
-  var list = document.querySelector('#tasks');
-  list.innerHTML = '';
+  // clear all completed tasks from UI
+  var completedTasks = document.querySelectorAll('.completed');
+  completedTasks.forEach(function (task) {
+    task.parentNode.remove();
+  });
   UI.showAlert('All completed tasks have been removed', 'success');
 });
 })();
