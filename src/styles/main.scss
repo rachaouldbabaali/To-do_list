@@ -102,9 +102,16 @@ li {
   .checkbox {
     margin-right: 1rem;
   }
+
+  .task-description {
+    display: inline-block;
+    width: 85%;
+    background-color: transparent;
+    border: none;
+  }
 }
 
-#clear-btn{
+#clear-btn {
   margin: 1rem auto;
   border: none;
   background-color: transparent;
@@ -118,11 +125,10 @@ li {
     background-color: transparent;
     color: $primary-color;
   }
-
 }
+
 .insert-task {
   background-color: rgb(250, 66, 66);
   color: white;
   padding: 0.5rem 1rem;
-  
 }
