@@ -42,11 +42,26 @@ class Store {
     tasks.forEach((task) => {
       if (task.index == index) {
         task.description = description;
+        task.completed = completed;
       }
 
       task.index = tasks.indexOf(task) + 1;
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
+
+  //good
+  static updateCheckbox(index, completed) {
+    const tasks = Store.getTasks();
+    tasks.forEach((task) => {
+      if (task.index == index) {
+        task.completed = completed;
+      }
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+
+    
 }
 export default Store;
