@@ -94,6 +94,15 @@ var Store = /*#__PURE__*/function () {
       });
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
+  }, {
+    key: "clearCompletedTasks",
+    value: function clearCompletedTasks() {
+      var tasks = Store.getTasks();
+      var filteredTasks = tasks.filter(function (ele) {
+        return ele.completed != true;
+      });
+      localStorage.setItem('tasks', JSON.stringify(filteredTasks));
+    }
   }]);
   return Store;
 }();
@@ -802,21 +811,6 @@ document.querySelector('#tasks').addEventListener('change', function (e) {
   _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].updateTask(index, e.target.value);
 });
 
-// Event: clear completed tasks (working don't touch)
-document.querySelector('#clear-btn').addEventListener('click', function (e) {
-  e.preventDefault();
-  // Remove task from localStorage
-  var completedTasks = document.querySelectorAll('.completed');
-  completedTasks.forEach(function (task) {
-    var index = task.id;
-    _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(index);
-  });
-  // clear the UI
-  var list = document.querySelector('#tasks');
-  list.innerHTML = '';
-  UI.showAlert('All completed tasks have been removed', 'success');
-});
-
 // the function of checkebox
 document.querySelector('#tasks').addEventListener('click', function (e) {
   e.preventDefault();
@@ -831,6 +825,18 @@ document.querySelector('#tasks').addEventListener('click', function (e) {
     task.completed = !task.completed;
   }
   _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].updateCheckbox(taskIndex, task.completed);
+});
+
+// Event: Clear All completed Tasks
+document.querySelector('#clear-btn').addEventListener('click', function (e) {
+  e.preventDefault();
+  // remove selected tasks from localStorage
+  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].clearCompletedTasks();
+
+  // clear the UI
+  var list = document.querySelector('#tasks');
+  list.innerHTML = '';
+  UI.showAlert('All completed tasks have been removed', 'success');
 });
 })();
 

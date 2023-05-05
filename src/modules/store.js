@@ -61,7 +61,11 @@ class Store {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-
+  static clearCompletedTasks() {
+    const tasks = Store.getTasks();
+    const filteredTasks = tasks.filter((ele) => ele.completed != true);
+    localStorage.setItem('tasks', JSON.stringify(filteredTasks));
+  }
     
 }
 export default Store;
