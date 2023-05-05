@@ -134,7 +134,7 @@ document.querySelector('#clear-btn').addEventListener('click', (e) => {
   // clear all completed tasks from UI
   const completedTasks = document.querySelectorAll('.completed');
   completedTasks.forEach((task) => {
-    task.parentNode.remove();
+    task.parentNode.UI.remove();
   });
   UI.showAlert('All completed tasks have been removed', 'success');
 });
