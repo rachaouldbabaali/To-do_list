@@ -140,4 +140,5 @@ document.querySelector('#clear-btn').addEventListener('click', (e) => {
   UI.deleteCompletedTasks();
   UI.showAlert('All completed tasks have been removed', 'success');
   Store.clearCompletedTasks();
+  Store.updateIndex();
 });
