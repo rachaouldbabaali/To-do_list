@@ -91,6 +91,7 @@ var Store = /*#__PURE__*/function () {
       });
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
+
     // check if task is already in the list
   }, {
     key: "checkTask",
@@ -761,7 +762,7 @@ var UI = /*#__PURE__*/function () {
       var removeTaskBtn = document.getElementById("delete-btn".concat(task.index));
       removeTaskBtn.addEventListener('click', function () {
         UI.deleteTask(removeTaskBtn);
-        // Remove task from localStorage 
+        // Remove task from localStorage
         _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].removeTask(task.index);
         // update index of tasks in localStorage
         _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].updateIndex();
@@ -882,6 +883,7 @@ document.querySelector('#clear-btn').addEventListener('click', function (e) {
   UI.deleteCompletedTasks();
   UI.showAlert('All completed tasks have been removed', 'success');
   _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].clearCompletedTasks();
+  _modules_store_js__WEBPACK_IMPORTED_MODULE_2__["default"].updateIndex();
 });
 })();
 
