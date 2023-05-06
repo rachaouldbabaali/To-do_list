@@ -94,11 +94,6 @@ li {
     color: $third-color;
   }
 
-  &.completed {
-    text-decoration: line-through;
-    color: $secondary-color;
-  }
-
   .checkbox {
     margin-right: 1rem;
   }
@@ -131,4 +126,9 @@ li {
   background-color: rgb(250, 66, 66);
   color: white;
   padding: 0.5rem 1rem;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: $secondary-color;
 }
