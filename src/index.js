@@ -29,7 +29,10 @@ class UI {
       UI.deleteTask(removeTaskBtn);
       // Remove task from localStorage
       Store.removeTask(task.index);
+      // update index of tasks in localStorage
+      Store.updateIndex();
     });
+    Store.updateIndex();
   }
 
   static deleteTask(el) {
@@ -106,7 +109,7 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
     UI.showAlert('Task Added', 'success');
     // Add task to store
     Store.addTask(task);
-
+    Store.updateIndex();
     // Clear fields
     UI.clearFields();
   }

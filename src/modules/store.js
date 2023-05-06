@@ -24,6 +24,14 @@ class Store {
     localStorage.setItem('tasks', JSON.stringify(filteredTasks));
   }
 
+  static updateIndex() {
+    const tasks = this.getTasks();
+    tasks.forEach((task) => {
+      task.index = tasks.indexOf(task) + 1;
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
   // check if task is already in the list
   static checkTask(description) {
     const tasks = Store.getTasks();
