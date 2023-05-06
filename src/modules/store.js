@@ -24,6 +24,14 @@ class Store {
     localStorage.setItem('tasks', JSON.stringify(filteredTasks));
   }
 
+  static updateIndex() {
+    const tasks = this.getTasks();
+    tasks.forEach((task) => {
+      task.index = tasks.indexOf(task) + 1;
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
   // check if task is already in the list
   static checkTask(description) {
     const tasks = Store.getTasks();
@@ -47,6 +55,22 @@ class Store {
       task.index = tasks.indexOf(task) + 1;
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  static updateCheckbox(index, completed) {
+    const tasks = Store.getTasks();
+    tasks.forEach((task) => {
+      if (task.index == index) {
+        task.completed = completed;
+      }
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  static clearCompletedTasks() {
+    const tasks = Store.getTasks();
+    const filteredTasks = tasks.filter((ele) => ele.completed != true);
+    localStorage.setItem('tasks', JSON.stringify(filteredTasks));
   }
 }
 export default Store;
